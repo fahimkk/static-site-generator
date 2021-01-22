@@ -41,8 +41,6 @@ jobs:
         
     - name: copy files from output folder in github repo to aws ec2 instance
       run: |
-        pwd
-        ls
         cd ~/.ssh
         chmod 400 aws_fahimmoorad_1.pem
         ${{ secrets.AWS_EC2 }}
