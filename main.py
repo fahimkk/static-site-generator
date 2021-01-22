@@ -13,7 +13,9 @@ for markdown_post in os.listdir('posts'):
         # extras = ['metadata'] gives a dict of metadata
         # that we provided at the begining of the markdown file.
         POSTS[markdown_post] = \
-            markdown2.markdown(f.read(), extras=['metadata'])
+            markdown2.markdown(f.read(), extras=['metadata',
+                                                 'fenced-code-blocks',
+                                                 'code-color'])
         # POSTS dict -
         # key : markdown_post, ie file name
         # value: content (string format html)
@@ -41,6 +43,9 @@ posts_metadata = [POSTS[post].metadata for post in POSTS]
 index_html = index_template.render(posts=posts_metadata)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
+
+# If the directory site is not there create one.
+os.makedirs('site', exist_ok=True)
 with open('site/index.html', 'w') as f:
     f.write(index_html)
 
