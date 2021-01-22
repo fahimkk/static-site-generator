@@ -7,8 +7,8 @@ import jinja2
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
 # Loop through all the markdown files from posts directory
-for markdown_post in os.listdir('posts'):
-    file_path = os.path.join('posts', markdown_post)
+for markdown_post in os.listdir('_posts'):
+    file_path = os.path.join('_posts', markdown_post)
     with open(file_path, 'r') as f:
         # extras = ['metadata'] gives a dict of metadata
         # that we provided at the begining of the markdown file.
@@ -31,7 +31,7 @@ POSTS = {
         reverse=True)
 }
 
-env = jinja2.Environment(loader=jinja2.PackageLoader('main', 'templates'))
+env = jinja2.Environment(loader=jinja2.PackageLoader('main', '_templates'))
 # PackageLoader -
 # 1st arg - name of python file
 # 2nd arg - directory name where template files are located
@@ -45,8 +45,8 @@ index_html = index_template.render(posts=posts_metadata)
 # variable posts to our index.html page template
 
 # If the directory site is not there create one.
-os.makedirs('site', exist_ok=True)
-with open('site/index.html', 'w') as f:
+os.makedirs('_site', exist_ok=True)
+with open('_site/index.html', 'w') as f:
     f.write(index_html)
 
 # To render individual post pages
@@ -58,7 +58,7 @@ for post in POSTS:
         'date': posts_metadata['date']
     }
     post_html = post_template.render(post=post_data)
-    post_filepath = 'site/posts/{slug}.html'.format(
+    post_filepath = '_site/posts/{slug}.html'.format(
         slug=posts_metadata['slug'])
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
     with open(post_filepath, 'w') as f:
