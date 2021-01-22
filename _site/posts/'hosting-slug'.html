@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body class="container">
+    
+    <h1>"Hosting on Github Pages"</h1>
+    <p>
+        <small>02-10-2020</small>
+        <p>Github pages is a service that github offers, and it basically allows you to serve and host a static website completly free.</p>
+
+<ol>
+<li>Create a new repository - make sure that you dont initialize with a readme.</li>
+<li>Modify baseurl inside the <code>_config.yml</code> file</li>
+</ol>
+
+<pre><code>baseurl: "name of the repository"
+# if you have a custom domain name put that.
+# it acts as the base url for our website.
+</code></pre>
+
+<p>3.Open up terminal</p>
+
+<p>to initialize the git inside the root directory.</p>
+
+<pre><code>git init
+</code></pre>
+
+<p>checkout to the gh-pages branch.
+When you create a Github pages website, all the files for that website get stored on the gh-pages branch</p>
+
+<pre><code>git checkout -b gh-pages
+</code></pre>
+
+<p>Add all of the files to commit</p>
+
+<pre><code>git add .
+</code></pre>
+
+<p>Commit all of the files to our repository</p>
+
+<pre><code>git commit -m "initial commit"
+</code></pre>
+
+<p>Link our local git repository with the Github repository.</p>
+
+<pre><code>git remote add origin repository_link
+</code></pre>
+
+<p>Push all the files into Github repository</p>
+
+<pre><code>git push origin gh-pages
+</code></pre>
+
+<p>4.Open Github - settings - inside the Github pages section you will get a link for the website.</p>
+
+    </p>
+ 
+</body>
+</html>
