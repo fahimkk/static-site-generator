@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jekyll Tutorial"
+title: Jekyll Tutorial
 permalink: "/jekyll-tutorial"
 date: 21-01-2021
 slug: jekyll-tutorial
