@@ -3,6 +3,7 @@ from datetime import datetime
 
 import markdown2
 import jinja2
+import shutil
 
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
@@ -44,8 +45,11 @@ index_html = index_template.render(posts=posts_metadata)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
 
-# If the directory site is not there create one.
-os.makedirs('_site', exist_ok=True)
+# to remove old files
+if os.path.exists('_site'):
+    # shutil method removes non empty directory
+    shutil.rmtree('_site')
+os.mkdir('_site')
 with open('_site/index.html', 'w') as f:
     f.write(index_html)
 
