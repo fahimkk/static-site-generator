@@ -3,7 +3,7 @@ layout: post
 title: "Jekyll Tutorial"
 permalink: "/jekyll-tutorial"
 date: 21-01-2021
-slug: "jekyll-tutorial"
+slug: jekyll-tutorial
 ---
 
 ## Folder Structure
