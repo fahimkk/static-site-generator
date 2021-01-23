@@ -45,11 +45,8 @@ index_html = index_template.render(posts=posts_metadata)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
 
-# to remove old files
-if os.path.exists('_site'):
-    # shutil method removes non empty directory
-    shutil.rmtree('_site')
-os.mkdir('_site')
+# Create _site dir if not exists
+os.makedirs('_site', exist_ok=True)
 with open('_site/index.html', 'w') as f:
     f.write(index_html)
 
