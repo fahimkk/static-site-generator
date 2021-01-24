@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "Jekyll Tutorial"
-permalink: "/jekyll-tutorial"
-date: 21-01-2021
-slug: jekyll-tutorial
+title: Jekyll Tutorial
+permalink: jekyll-tutorial
+image: tutorial.png
 ---
 
 ## Folder Structure

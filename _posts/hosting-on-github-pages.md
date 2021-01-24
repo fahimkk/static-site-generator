@@ -1,9 +1,8 @@
 ---
 layout: post
 title: Hosting on Github Pages
-permalink: "/hosting-on-github-pages"
-date: 02-10-2020
-slug: hosting-slug
+permalink: hosting-on-github-pages
+image: hosting.png
 ---
 
 Github pages is a service that github offers, and it basically allows you to serve and host a static website completly free.
