@@ -3,7 +3,6 @@ from datetime import datetime
 
 import markdown2
 import jinja2
-import shutil
 
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
@@ -21,6 +20,10 @@ for markdown_post in os.listdir('_posts'):
         # key : markdown_post, ie file name
         # value: content (string format html)
         # POSTS['markdown_post'].metadata gives a dict of metadata
+
+        # Add default date (Current date) if date is not given in the post
+        POSTS[markdown_post].metadata.setdefault(
+            'date', datetime.today().strftime('%d-%m-%Y'))
 
 # Sort the markdown_post w.r.t time
 # strptime is used to convert string date to date format
