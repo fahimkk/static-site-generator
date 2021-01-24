@@ -24,9 +24,10 @@ for markdown_post in os.listdir('_posts'):
         # Add default date (Current date) if date is not given in the post
         POSTS[markdown_post].metadata.setdefault(
             'date', datetime.today().strftime('%d-%m-%Y'))
-        # Add default slug - if slug is not give use filename without extn
+        # Add default permalink -
+        # if permalink is not given use filename without extn
         POSTS[markdown_post].metadata.setdefault(
-            'slug', markdown_post[:-3])
+            'permalink', markdown_post[:-3])
 
 # If the assets dir is not present create one and
 # copy inside the _site and posts dir
@@ -72,8 +73,8 @@ for post in POSTS:
         'date': posts_metadata['date']
     }
     post_html = post_template.render(post=post_data)
-    post_filepath = '_site/posts/{slug}.html'.format(
-        slug=posts_metadata['slug'])
+    post_filepath = '_site/posts/{permalink}.html'.format(
+        permalink=posts_metadata['permalink'])
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
     with open(post_filepath, 'w') as f:
         f.write(post_html)
