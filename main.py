@@ -24,6 +24,10 @@ for markdown_post in os.listdir('_posts'):
         # Add default date (Current date) if date is not given in the post
         POSTS[markdown_post].metadata.setdefault(
             'date', datetime.today().strftime('%d-%m-%Y'))
+        # Add default slug - if slug is not give use filename without extn
+        POSTS[markdown_post].metadata.setdefault(
+            'slug', markdown_post[:-3])
+
 
 # Sort the markdown_post w.r.t time
 # strptime is used to convert string date to date format
