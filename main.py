@@ -28,6 +28,12 @@ for markdown_post in os.listdir('_posts'):
         POSTS[markdown_post].metadata.setdefault(
             'slug', markdown_post[:-3])
 
+# If the assets dir is not present create one and
+# copy inside the _site and posts dir
+# put all the css files and images inside the asset dir
+os.makedirs('assets', exist_ok=True)
+cp_cmd = "cp -r assets _site; cp -r assets _site/posts"
+os.popen(cp_cmd)
 
 # Sort the markdown_post w.r.t time
 # strptime is used to convert string date to date format
