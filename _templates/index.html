@@ -1,16 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Blog Posts</h1>
-<div>
-    {% for post in posts %}
-    <p>
-        <h2>
-            <!-- The current iteration of the loop-->
-            {{ loop.index }}: <a href="posts/{{ post.slug }}.html">{{ post.title }}</a>
-            <small>{{ post.date }}</small>
-        </h2>
-        {{ post.summary }}
-    </p>
-    {% endfor %}
+<div>   
+    <p style="margin-top: 10px;margin-bottom: 30px; text-align: center; font-style: italic; color: #555555;">Fahim</p>
+
+
+    <div class="row row-cols-1 row-cols-md-4 g-4" style="margin-top: 20px;">
+        {% for post in posts %}
+        <div class="col">
+          <div class="card" style="margin: 30px;">
+            <img src="assets/{{ post.image }}" class="card-img-top" alt="{{ posts.image }}">
+            <div class="card-body">
+              <h5 class="card-title">
+                  <a href="posts/{{ post.permalink }}.html">{{ post.title }}</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
 </div>
 {% endblock %}
