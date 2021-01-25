@@ -3,13 +3,15 @@
 <div>   
     <!--name shows only in index(home) page, for post it shows post title-->
     <p style="margin-top: 10px;margin-bottom: 30px; text-align: center; font-style: italic; color: #555555;">Fahim</p>
+
+    <!--Page name-->
     <div class="pt-4" id="page_heading">
       <h1>
         Home
       </h1>
     </div>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
 
+    <div class="row row-cols-1 row-cols-md-4 g-4">
         {% for post in posts %}
           <div class="col">
             <div class="card" style="margin: 30px;">

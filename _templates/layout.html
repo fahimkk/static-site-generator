@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fahim</title>
     <link rel="stylesheet" href="assets/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
+
+    <!--script for social media icon-->
+    <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
     <!--Script for dropdown menu list when collaps -Responsice -toggler -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
 
+<body>
     <!--Main container - whole page-->
     <div class="container" id="main_container">
 
@@ -45,8 +49,16 @@
         <img src="assets/fahim.jpg"class="card-img-top" alt="img">
     </div>
 
-
     {% block content %} {% endblock %} 
-    </div>
+</div>
+<!--footer-->
+<footer id="main_footer">
+  <hr>
+  <a href="https://www.linkedin.com/in/fahim-asharaf-b10433a2/" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/fahimkk" target="_blank"><i class="fab fa-github-square"></i></a>
+  <a href="https://www.instagram.com/fahimasharaf/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+  <p>&copy; 2021 Fahim kk</p>
+</footer>
+
 </body>
 </html>
