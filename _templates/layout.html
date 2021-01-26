@@ -16,7 +16,7 @@
 
 <body>
     <!--Main container - whole page-->
-    <div class="container" id="main_container">
+    <div class="container-md" id="main_container">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary mx-auto" style="margin-bottom: 50px; border-radius: 5px;">
         <div class="container">
@@ -28,18 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!--mx-auto - to align center-->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link " aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link " aria-current="page" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link " aria-current="page" href="#">Works</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link " aria-current="page" href="#">About</a>
-                    </li>
+                    {% block navbar %} {% endblock %}
                 </ul>
           </div>
         </div>

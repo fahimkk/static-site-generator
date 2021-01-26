@@ -1,4 +1,20 @@
 {% extends "layout.html" %}
+
+{% block navbar%}
+<li class="nav-item active">
+  <a class="nav-link " aria-current="page" href="../index.html">Home</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link " aria-current="page" href="#">Blog</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link " aria-current="page" href="../pages/work.html">Works</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link " aria-current="page" href="../pages/about.html">About</a>
+</li>
+{% endblock %}
+
 {% block content %}
 <div class="text-muted" id="post_heading">
     <h1>{{ post.title }}</h1>
