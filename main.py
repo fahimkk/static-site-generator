@@ -29,13 +29,6 @@ for markdown_post in os.listdir('_posts'):
         POSTS[markdown_post].metadata.setdefault(
             'permalink', markdown_post[:-3])
 
-# If the assets dir is not present create one and
-# copy inside the _site and posts dir
-# put all the css files and images inside the asset dir
-os.makedirs('assets', exist_ok=True)
-cp_cmd = "cp -r assets _site; cp -r assets _site/posts"
-os.popen(cp_cmd)
-
 # Sort the markdown_post w.r.t time
 # strptime is used to convert string date to date format
 POSTS = {
@@ -78,3 +71,39 @@ for post in POSTS:
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
     with open(post_filepath, 'w') as f:
         f.write(post_html)
+
+# to render individual pages.
+# PAGES dict is to store pages from the dir _pages
+PAGES = {}
+for markdown_page in os.listdir('_pages'):
+    page_path = os.path.join('_pages', markdown_page)
+    with open(page_path, 'r') as f:
+        PAGES[markdown_page] = \
+            markdown2.markdown(f.read(), extras=['metadata',
+                                                 'fenced-code-blocks',
+                                                 'code-color'])
+page_template = env.get_template('page.html')
+
+for page in PAGES:
+    page_metadata = PAGES[page].metadata
+    page_data = {
+        'content': PAGES[page],
+        'title': page_metadata['title']
+    }
+    page_html = page_template.render(page=page_data)
+    page_filepath = '_site/pages/{permalink}.html'.format(
+        permalink=page_metadata['permalink'])
+    os.makedirs(os.path.dirname(page_filepath), exist_ok=True)
+    with open(page_filepath, 'w') as f:
+        f.write(page_html)
+
+# If the assets dir is not present create one and
+# copy inside the _site and posts dir
+# put all the css files and images inside the asset dir
+os.makedirs('assets', exist_ok=True)
+cp_cmd = """
+cp -r assets _site;
+cp -r assets _site/posts;
+cp -r assets _site/pages
+"""
+os.popen(cp_cmd)
