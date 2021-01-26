@@ -1,21 +1,11 @@
+
+/* layout template */
 #main_container{
 padding-bottom: 50px;
 }
-
-#page_heading{
-font-style:italic; 
-letter-spacing: 0.1em; 
-text-align: center;
-font-family: 'Times New Roman', Times, serif;
-font-weight:bold;
-color: #555555;
+#profile_img{
+  text-align: center;
 }
-#post_heading{
-text-align: center; 
-padding:50px 50px;
-}
-
-
 #main_footer{
 text-align: center;
 font-size: small;
@@ -31,5 +21,54 @@ color: #2B8388;
 #main_footer i:hover{
   color: #2b8388;
 }
+/* page template */
+#page_heading{
+font-style:italic; 
+letter-spacing: 0.1em; 
+text-align: center;
+font-family: 'Times New Roman', Times, serif;
+font-weight:bold;
+color: #555555;
+}
+
+/* post template */
+#post_heading{
+text-align: center; 
+padding:50px 50px;
+}
 #post_content{
+}
+@media(max-width:700px){
+  #details{
+    display: none;
+  }
+}
+#details{
+}
+#details i{
+  color: #555555;
+  font-size: larger;
+  padding-right: 8px;
+}
+#details i:hover{
+  color: #b3aeae;
+}
+#details h6{
+  padding-top: 15px;
+  padding-bottom: 0px;
+  font-weight: normal;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.06em;
+}
+#cat{
+  padding-top: 10px;
+  font-size: 3mm;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: .01em;
+  font-weight: 500;
+}
+#time_date{
+  padding-top: 20px;
+  font-size: 3mm;
+  font-style: italic;
 }

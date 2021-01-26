@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 
+<!--navbar page link-->
 {% block navbar%}
 <li class="nav-item active">
   <a class="nav-link " aria-current="page" href="../index.html">Home</a>
@@ -16,11 +17,42 @@
 {% endblock %}
 
 {% block content %}
+<!--Post title -->
 <div class="text-muted" id="post_heading">
-    <h1>{{ post.title }}</h1>
-    <small>{{ post.date }}</small>
+      <h1>{{ post.title }}</h1>
 </div>
-<div id="post_content">
-    {{ post.content }}
+<!--Start Grid System-->
+<div class="row" >
+<!--left side - profile details-->
+  <div class="col-3" style="padding-left: 60px;" id="details">
+    <div style="text-align: center;">
+    <img src="assets/fahim.jpg" class="rounded-circle" alt="img" width="100px">
+    <h6><small>Fahim Asharaf</small></h6>
+    <a href="https://www.linkedin.com/in/fahim-asharaf-b10433a2/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/fahimkk" target="_blank"><i class="fab fa-github-square"></i></a>
+    <a href="https://www.instagram.com/fahimasharaf/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+    <p id="time_date">
+      {{ post.time }}
+      <br>
+      {{ post.date }}
+    </p>
+    <p id="cat">
+      CATEGORIES
+      <br>
+      Technical
+    </p>
+    <p id="cat">
+      TAGS
+      <br>
+      {{ post.tags }}
+    </p>
+    </div>
+  </div>
+<!--right side - post content-->
+  <div class="col-8">
+    <div id="post_content">
+      {{ post.content }}
+    </div>
+    {% endblock %}
+  </div>
 </div>
-{% endblock %}
