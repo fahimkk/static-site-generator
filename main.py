@@ -36,8 +36,9 @@ for markdown_post in os.listdir('_posts'):
 
 # DEFAULT DATA
         # date (Current date) if date is not given in the post
+        # strftime returns the string representation of date.
         POSTS[markdown_post].metadata.setdefault(
-            'date', datetime.today().strftime('%d-%m-%Y'))
+            'date', datetime.today().strftime('%B %d,%Y'))
         # title -if title is not given use filename without extn
         POSTS[markdown_post].metadata.setdefault(
             'title', markdown_post[:-3])
@@ -57,7 +58,7 @@ POSTS = {
     # key: value for key in sorted posts
     post: POSTS[post] for post in sorted(
         POSTS, key=lambda post: datetime.strptime(
-            POSTS[post].metadata['date'], '%d-%m-%Y'),
+            POSTS[post].metadata['date'], '%B %d,%Y'),
         reverse=True)
 }
 
@@ -120,8 +121,8 @@ for page in PAGES:
         f.write(page_html)
 
 # If the assets dir is not present create one and
-# copy inside the _site and posts dir
 # put all the css files and images inside the asset dir
+# copy to the _site
 os.makedirs('assets', exist_ok=True)
 cp_cmd = "cp -r assets _site"
 os.popen(cp_cmd)
