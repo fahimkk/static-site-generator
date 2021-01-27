@@ -1,10 +1,41 @@
+/*MODE: dark*/
+
+@media(max-width:676px){
+  #details{
+    display: none;
+  }
+  #navbar{
+    width: 100%;
+  }
+}
+@media(min-width:676px){
+  #navbar{
+    height: 40px;
+    width: 300px;
+  }
+}
+
 /* layout template */
 /*color white*/
 #bg{
-  background-color:white;
+  background-color:#252A34;
 }
 #main_container{
 padding-bottom: 50px;
+}
+#navbar{
+margin-bottom: 30px;
+border-radius: 5px;
+}
+#menu_icon{
+width:0;
+height: 0;
+}
+#menu_text{
+}
+/* color: #b3aeae;*/
+#menu_text:hover{
+  color: #b3aeae;
 }
 #profile_img{
   text-align: center;
@@ -26,6 +57,7 @@ padding-bottom: 50px;
 /*color white*/
 #post_title_link{
   text-decoration: none;
+  color: white;
 }
 
 /*color white*/
@@ -34,10 +66,12 @@ text-align: center;
 font-size: small;
 font-family: Arial, Helvetica, sans-serif;
 padding-bottom: 30px;
+color: white;
 }
 /*color white*/
 #main_footer hr{
   height: 3px;
+  color: white;
 }
 #main_footer i{
 font-size:xx-large;
@@ -50,6 +84,15 @@ color: #2B8388;
 }
 
 /*-----------------------------*/
+/* color white*/
+#profile_name{
+margin-top: 10px;
+margin-bottom: 30px;
+text-align: center;
+font-style: italic;
+color: white;
+}
+/*-----------------------------*/
 /* page template */
 /*color white*/
 #page_heading{
@@ -58,11 +101,11 @@ letter-spacing: 0.1em;
 text-align: center;
 font-family: 'Times New Roman', Times, serif;
 font-weight:bold;
-color: #555555;
+color: white;
 }
 /*color white*/
 #page_content{
-
+color: white;
 }
 
 /*-----------------------------*/
@@ -76,28 +119,26 @@ font-family: 'Times New Roman', Times, serif;
 font-style: italic;
 font-size: 60px;
 font-weight: bold;
+color: white;
 }
 /*color white*/
 #post_content{
+color: white;
 }
 
-@media(max-width:700px){
-  #details{
-    display: none;
-  }
-}
+
 
 #details{
 padding-left: 60px;
 text-align: center;
 }
 #details i{
-  color: #555555;
+  color: #b3aeae;
   font-size: larger;
   padding-right: 8px;
 }
 #details i:hover{
-  color: #b3aeae;
+  color: #555555;
 }
 /*color white*/
 #details h6{
@@ -106,6 +147,7 @@ text-align: center;
   font-weight: normal;
   font-family: 'Times New Roman', Times, serif;
   letter-spacing: 0.06em;
+  color: white;
 }
 /*Categoreis*/
 /*color white*/
@@ -115,10 +157,12 @@ text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: .01em;
   font-weight: 500;
+  color: white;
 }
 /*color white*/
 #time_date{
   padding-top: 20px;
   font-size: 3mm;
   font-style: italic;
+  color: white;
 }

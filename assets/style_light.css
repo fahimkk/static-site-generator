@@ -1,0 +1,158 @@
+/*MODE: light*/
+@media(max-width:676px){
+  #details{
+    display: none;
+  }
+  #navbar{
+    width: 100%;
+  }
+}
+@media(min-width:676px){
+  #navbar{
+    height: 40px;
+    width: 300px;
+  }
+}
+
+/* layout template */
+/*color white*/
+#bg{
+  background-color:white;
+}
+#main_container{
+padding-bottom: 50px;
+}
+#navbar{
+margin-bottom: 30px;
+border-radius: 5px;
+}
+#menu_icon{
+width:0px;
+height: 0;
+}
+#menu_text{
+}
+/* color: #b3aeae;*/
+#menu_text:hover{
+  color: #b3aeae;
+}
+#profile_img{
+  text-align: center;
+}
+#post_img_link{
+  text-align: center;
+  margin-top: 30px;
+  margin-right: 30px;
+}
+#post_title{
+  text-align: left;
+  padding-top: 8px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  font-style: italic;
+}
+/*color white*/
+#post_title_link{
+  text-decoration: none;
+  color: #555555;
+}
+
+/*color white*/
+#main_footer{
+text-align: center;
+font-size: small;
+font-family: Arial, Helvetica, sans-serif;
+padding-bottom: 30px;
+}
+/*color white*/
+#main_footer hr{
+  height: 3px;
+}
+#main_footer i{
+font-size:xx-large;
+padding: 5px;
+padding-top: 20px;
+color: #2B8388;
+}
+#main_footer i:hover{
+  color: #095053;
+}
+/*-----------------------------*/
+/* color white*/
+#profile_name{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-style: italic;
+  color: #555555;
+  }
+/*-----------------------------*/
+/* page template */
+/*color white*/
+#page_heading{
+font-style:italic; 
+letter-spacing: 0.1em; 
+text-align: center;
+font-family: 'Times New Roman', Times, serif;
+font-weight:bold;
+color: #555555;
+}
+/*color white*/
+#page_content{
+
+}
+
+/*-----------------------------*/
+/* post template */
+/*color white*/
+#post_heading{
+text-align: left; 
+/*padding: top right bottom left*/
+padding:50px 0px 20px 70px;
+font-family: 'Times New Roman', Times, serif;
+font-style: italic;
+font-size: 60px;
+font-weight: bold;
+color: #555555;
+}
+/*color white*/
+#post_content{
+}
+
+#details{
+padding-left: 60px;
+text-align: center;
+}
+#details i{
+  color: #555555;
+  font-size: larger;
+  padding-right: 8px;
+}
+#details i:hover{
+  color: #b3aeae;
+}
+/*color white*/
+#details h6{
+  padding-top: 15px;
+  padding-bottom: 0px;
+  font-weight: normal;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.06em;
+}
+/*Categoreis*/
+/*color white*/
+#cat{
+  padding-top: 10px;
+  font-size: 3mm;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: .01em;
+  font-weight: 500;
+}
+/*color white*/
+#time_date{
+  padding-top: 20px;
+  font-size: 3mm;
+  font-style: italic;
+}
