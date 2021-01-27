@@ -58,7 +58,9 @@ height: 0;
   text-decoration: none;
   color: #555555;
 }
-
+#post_title_link:hover{
+  color: #2B8388;
+}
 /*color white*/
 #main_footer{
 text-align: center;
