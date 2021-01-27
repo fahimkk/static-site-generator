@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
+<!--css files from asset folder-->
+{% block css %}
+<link rel="stylesheet" href="assets/bootstrap.min.css">
+<link rel="stylesheet" href="assets/style.css">
+{% endblock %}
+
+<!--navbar pages-->
 {% block navbar%}
 <li class="nav-item active">
   <a class="nav-link " aria-current="page" href="index.html">Home</a>
@@ -13,6 +20,10 @@
 <li class="nav-item active">
   <a class="nav-link " aria-current="page" href="pages/about.html">About</a>
 </li>
+{% endblock %}
+
+{% block profile_img%}
+<img src="assets/fahim.jpg" class="rounded-circle" alt="img" width="150px">
 {% endblock %}
 
 {% block content %}
@@ -30,16 +41,20 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
         {% for post in posts %}
           <div class="col">
-            <div class="card" style="margin: 30px;">
-              <img src="assets/{{ post.image }}" class="card-img-top" alt="{{ posts.image }}">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <a href="posts/{{ post.permalink }}.html">{{ post.title }}</a>
-                </h5>
+        <!--div for - image and title link-->
+            <div id="post_img_link">
+              <div class="card">
+                <a href="posts/{{ post.permalink }}.html">
+                  <img src="assets/{{ post.image }}" class="card-img-top" alt="{{ posts.image }}">
+                </a>
+              </div>
+              <h4 id="post_title">
+                <a href="posts/{{ post.permalink }}.html" id="post_title_link">{{ post.title }}</a>
+              </h4>
               </div>
             </div>
-          </div>
         {% endfor %}
+          </div>
     </div>
 </div>
 {% endblock %}

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fahim</title>
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    {% block css %} {% endblock %}
 
     <!--script for social media icon-->
     <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
@@ -14,7 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<!--for background color-->
+<body id="bg">
     <!--Main container - whole page-->
     <div class="container-md" id="main_container">
 
@@ -35,11 +35,12 @@
     </nav>
     <!-- profile image-->
     <div id="profile_img">
-        <img src="assets/fahim.jpg" class="rounded-circle" alt="img" width="150px">
+        {% block profile_img %} {% endblock %} 
     </div>
 
     {% block content %} {% endblock %} 
 </div>
+</div> <!--for footer line in post page-->
 <!--footer-->
 <footer id="main_footer">
   <hr>

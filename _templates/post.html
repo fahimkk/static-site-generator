@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+<!--css files from asset folder-->
+{% block css %}
+<link rel="stylesheet" href="../assets/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+{% endblock %}
+
 <!--navbar page link-->
 {% block navbar%}
 <li class="nav-item active">
@@ -16,17 +22,20 @@
 </li>
 {% endblock %}
 
+{% block profile_img%}
+<img src="../assets/fahim.jpg" class="rounded-circle" alt="img" width="150px">
+{% endblock %}
+
 {% block content %}
 <!--Post title -->
-<div class="text-muted" id="post_heading">
-      <h1>{{ post.title }}</h1>
+<div id="post_heading">
+    <p>{{ post.title }}</p>
 </div>
 <!--Start Grid System-->
 <div class="row" >
 <!--left side - profile details-->
-  <div class="col-3" style="padding-left: 60px;" id="details">
-    <div style="text-align: center;">
-    <img src="assets/fahim.jpg" class="rounded-circle" alt="img" width="100px">
+  <div class="col-3" id="details">
+    <img src="../assets/fahim.jpg" class="rounded-circle" alt="img" width="100px">
     <h6><small>Fahim Asharaf</small></h6>
     <a href="https://www.linkedin.com/in/fahim-asharaf-b10433a2/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/fahimkk" target="_blank"><i class="fab fa-github-square"></i></a>
@@ -46,13 +55,10 @@
       <br>
       {{ post.tags }}
     </p>
-    </div>
   </div>
 <!--right side - post content-->
-  <div class="col-8">
-    <div id="post_content">
+  <div class="col-9" id="post_content">
       {{ post.content }}
     </div>
     {% endblock %}
   </div>
-</div>
