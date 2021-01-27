@@ -1,16 +1,43 @@
-
 /* layout template */
+/*color white*/
+#bg{
+  background-color:white;
+}
 #main_container{
 padding-bottom: 50px;
 }
 #profile_img{
   text-align: center;
 }
+#post_img_link{
+  text-align: center;
+  margin-top: 30px;
+  margin-right: 30px;
+}
+#post_title{
+  text-align: left;
+  padding-top: 8px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  font-style: italic;
+}
+/*color white*/
+#post_title_link{
+  text-decoration: none;
+}
+
+/*color white*/
 #main_footer{
 text-align: center;
 font-size: small;
 font-family: Arial, Helvetica, sans-serif;
 padding-bottom: 30px;
+}
+/*color white*/
+#main_footer hr{
+  height: 3px;
 }
 #main_footer i{
 font-size:xx-large;
@@ -19,9 +46,12 @@ padding-top: 20px;
 color: #2B8388;
 }
 #main_footer i:hover{
-  color: #2b8388;
+  color: #095053;
 }
+
+/*-----------------------------*/
 /* page template */
+/*color white*/
 #page_heading{
 font-style:italic; 
 letter-spacing: 0.1em; 
@@ -30,20 +60,36 @@ font-family: 'Times New Roman', Times, serif;
 font-weight:bold;
 color: #555555;
 }
+/*color white*/
+#page_content{
 
-/* post template */
-#post_heading{
-text-align: center; 
-padding:50px 50px;
 }
+
+/*-----------------------------*/
+/* post template */
+/*color white*/
+#post_heading{
+text-align: left; 
+/*padding: top right bottom left*/
+padding:50px 0px 20px 70px;
+font-family: 'Times New Roman', Times, serif;
+font-style: italic;
+font-size: 60px;
+font-weight: bold;
+}
+/*color white*/
 #post_content{
 }
+
 @media(max-width:700px){
   #details{
     display: none;
   }
 }
+
 #details{
+padding-left: 60px;
+text-align: center;
 }
 #details i{
   color: #555555;
@@ -53,6 +99,7 @@ padding:50px 50px;
 #details i:hover{
   color: #b3aeae;
 }
+/*color white*/
 #details h6{
   padding-top: 15px;
   padding-bottom: 0px;
@@ -60,6 +107,8 @@ padding:50px 50px;
   font-family: 'Times New Roman', Times, serif;
   letter-spacing: 0.06em;
 }
+/*Categoreis*/
+/*color white*/
 #cat{
   padding-top: 10px;
   font-size: 3mm;
@@ -67,6 +116,7 @@ padding:50px 50px;
   letter-spacing: .01em;
   font-weight: 500;
 }
+/*color white*/
 #time_date{
   padding-top: 20px;
   font-size: 3mm;
