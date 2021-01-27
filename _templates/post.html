@@ -29,7 +29,7 @@
 {% block content %}
 <!--Post title -->
 <div id="post_heading">
-    <p>{{ post.title }}</p>
+    <h1 class="display-4">{{ post.title }}</h1>
 </div>
 <!--Start Grid System-->
 <div class="row" >
@@ -59,6 +59,6 @@
 <!--right side - post content-->
   <div class="col-9" id="post_content">
       {{ post.content }}
-    </div>
+  </div>
     {% endblock %}
   </div>

@@ -7,6 +7,11 @@
   #navbar{
     width: 100%;
   }
+  #post_content{
+    width: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 @media(min-width:676px){
   #navbar{
@@ -120,16 +125,15 @@ text-align: left;
 padding:50px 0px 20px 70px;
 font-family: 'Times New Roman', Times, serif;
 font-style: italic;
-font-size: 60px;
-font-weight: bold;
 color: white;
+}
+.display-4{
+  font-weight: 600;
 }
 /*color white*/
 #post_content{
 color: white;
 }
-
-
 
 #details{
 padding-left: 60px;
