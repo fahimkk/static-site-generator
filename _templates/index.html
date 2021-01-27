@@ -1,9 +1,8 @@
-{% extends "layout.html" %}
-
+{% extends "layout.html" %} 
 <!--css files from asset folder-->
 {% block css %}
 <link rel="stylesheet" href="assets/bootstrap.min.css">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style_{{ mode }}.css">
 {% endblock %}
 
 <!--navbar pages-->
@@ -29,7 +28,7 @@
 {% block content %}
 <div>   
     <!--name shows only in index(home) page, for post it shows post title-->
-    <p style="margin-top: 10px;margin-bottom: 30px; text-align: center; font-style: italic; color: #555555;">Fahim</p>
+    <p id="profile_name">Fahim</p>
 
     <!--Page name-->
     <div class="pt-4" id="page_heading">

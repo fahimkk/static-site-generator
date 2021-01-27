@@ -17,6 +17,12 @@ from datetime import datetime
 import markdown2
 import jinja2
 
+"""
+Currently 2 modes are available: dark and light
+by default : dark
+"""
+MODE = "dark"
+
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
 # Loop through all the markdown files from posts directory
@@ -34,7 +40,7 @@ for markdown_post in os.listdir('_posts'):
         # value: content (string format html)
         # POSTS['markdown_post'].metadata gives a dict of metadata
 
-# DEFAULT DATA
+# DEFAULT DATA FOR POSTS
         # date (Current date) if date is not given in the post
         # strftime returns the string representation of date.
         POSTS[markdown_post].metadata.setdefault(
@@ -51,6 +57,10 @@ for markdown_post in os.listdir('_posts'):
         # time - if time is not give use 0 min
         POSTS[markdown_post].metadata.setdefault(
             'time', '0 min')
+        # mode - by default dark mode,
+        # post.mode is also passed to index page
+        POSTS[markdown_post].metadata.setdefault(
+            'mode', MODE)
 
 # Sort the markdown_post w.r.t time
 # strptime is used to convert string date to date format
@@ -71,7 +81,8 @@ post_template = env.get_template('post.html')
 
 # Pass metadata to index.html page
 posts_metadata = [POSTS[post].metadata for post in POSTS]
-index_html = index_template.render(posts=posts_metadata)
+# posts_metadata is a list, so we can'nt access posts.mode in index.html
+index_html = index_template.render(posts=posts_metadata, mode=MODE)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
 
@@ -83,10 +94,14 @@ with open('_site/index.html', 'w') as f:
 # To render individual post pages
 for post in POSTS:
     posts_metadata = POSTS[post].metadata
+    # post_data dict is used to pass content also
     post_data = {
         'content': POSTS[post],
         'title': posts_metadata['title'],
-        'date': posts_metadata['date']
+        'date': posts_metadata['date'],
+        'mode': posts_metadata['mode'],
+        'time': posts_metadata['time'],
+        'tags': posts_metadata['tags']
     }
     post_html = post_template.render(post=post_data)
     post_filepath = '_site/posts/{permalink}.html'.format(
@@ -105,13 +120,22 @@ for markdown_page in os.listdir('_pages'):
             markdown2.markdown(f.read(), extras=['metadata',
                                                  'fenced-code-blocks',
                                                  'code-color'])
+
+# DEFAULT DATA FOR PAGES
+        # mode - by default dark mode,
+        # post.mode is also passed to index page
+        PAGES[markdown_page].metadata.setdefault(
+            'mode', 'style')
+
 page_template = env.get_template('page.html')
 
 for page in PAGES:
     page_metadata = PAGES[page].metadata
+    # page_data dict is used to pass content also
     page_data = {
         'content': PAGES[page],
-        'title': page_metadata['title']
+        'title': page_metadata['title'],
+        'mode': MODE
     }
     page_html = page_template.render(page=page_data)
     page_filepath = '_site/pages/{permalink}.html'.format(
