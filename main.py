@@ -1,3 +1,16 @@
+"""
+metada needed for blog posts
+don't put value in quotes
+date - eg: 26-01-2021 (by default current date)
+time - time required to complete - eg: 3 min (by default 0 min )
+title - title of the post (by default file name without extension)
+tags - tages related to the post (by default ... )
+permalink - name shows in the url link and
+    template file saves the post in that name
+    (by default file name without extendsion)
+image - image name with extension - to show in home page
+"""
+
 import os
 from datetime import datetime
 
@@ -21,13 +34,22 @@ for markdown_post in os.listdir('_posts'):
         # value: content (string format html)
         # POSTS['markdown_post'].metadata gives a dict of metadata
 
-        # Add default date (Current date) if date is not given in the post
+# DEFAULT DATA
+        # date (Current date) if date is not given in the post
         POSTS[markdown_post].metadata.setdefault(
             'date', datetime.today().strftime('%d-%m-%Y'))
-        # Add default permalink -
-        # if permalink is not given use filename without extn
+        # title -if title is not given use filename without extn
+        POSTS[markdown_post].metadata.setdefault(
+            'title', markdown_post[:-3])
+        # permalink -if permalink is not given use filename without extn
         POSTS[markdown_post].metadata.setdefault(
             'permalink', markdown_post[:-3])
+        # tags - if tags are not give put ...
+        POSTS[markdown_post].metadata.setdefault(
+            'tags', '...')
+        # time - if time is not give use 0 min
+        POSTS[markdown_post].metadata.setdefault(
+            'time', '0 min')
 
 # Sort the markdown_post w.r.t time
 # strptime is used to convert string date to date format
@@ -101,9 +123,5 @@ for page in PAGES:
 # copy inside the _site and posts dir
 # put all the css files and images inside the asset dir
 os.makedirs('assets', exist_ok=True)
-cp_cmd = """
-cp -r assets _site;
-cp -r assets _site/posts;
-cp -r assets _site/pages
-"""
+cp_cmd = "cp -r assets _site"
 os.popen(cp_cmd)
