@@ -13,15 +13,20 @@ image - image name with extension - to show in home page
 
 import os
 from datetime import datetime
+import yaml
 
 import markdown2
 import jinja2
 
 """
-Currently 2 modes are available: dark and light
+Currently 2 modes are available: dark and lite
 by default : dark
 """
 MODE = "dark"
+
+# for personal details
+with open('info.yaml') as f:
+    info = yaml.safe_load(f)
 
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
@@ -79,10 +84,20 @@ env = jinja2.Environment(loader=jinja2.PackageLoader('main', '_templates'))
 index_template = env.get_template('index.html')
 post_template = env.get_template('post.html')
 
+"""
+layout_template = env.get_template('layout_tem.html')
+layout_html = layout_template.render(info=info)
+# This file will be removed at the end. ie -
+# - data required for creating pages will be passed through layout.html
+# all the _template extends layout.html file
+with open('_templates/layout.html', 'w') as f:
+    f.write(layout_html)
+"""
+
 # Pass metadata to index.html page
 posts_metadata = [POSTS[post].metadata for post in POSTS]
 # posts_metadata is a list, so we can'nt access posts.mode in index.html
-index_html = index_template.render(posts=posts_metadata, mode=MODE)
+index_html = index_template.render(posts=posts_metadata, mode=MODE, info=info)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
 
@@ -103,7 +118,7 @@ for post in POSTS:
         'time': posts_metadata['time'],
         'tags': posts_metadata['tags']
     }
-    post_html = post_template.render(post=post_data)
+    post_html = post_template.render(post=post_data, info=info)
     post_filepath = '_site/posts/{permalink}.html'.format(
         permalink=posts_metadata['permalink'])
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
@@ -125,7 +140,7 @@ for markdown_page in os.listdir('_pages'):
         # mode - by default dark mode,
         # post.mode is also passed to index page
         PAGES[markdown_page].metadata.setdefault(
-            'mode', 'style')
+            'mode', MODE)
 
 page_template = env.get_template('page.html')
 
@@ -135,9 +150,9 @@ for page in PAGES:
     page_data = {
         'content': PAGES[page],
         'title': page_metadata['title'],
-        'mode': MODE
+        'mode': page_metadata['mode']
     }
-    page_html = page_template.render(page=page_data)
+    page_html = page_template.render(page=page_data, info=info)
     page_filepath = '_site/pages/{permalink}.html'.format(
         permalink=page_metadata['permalink'])
     os.makedirs(os.path.dirname(page_filepath), exist_ok=True)

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fahim</title>
-    {% block css %} {% endblock %}
+
+    <link rel="stylesheet" href="{% block path %}{% endblock %}/assets/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ self.path() }}/assets/style_dark.css">
 
     <!--script for social media icon-->
     <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
@@ -29,26 +31,41 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!--mx-auto - to align center-->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                    {% block navbar %} {% endblock %}
+                    <li class="nav-item active">
+                    <a class="nav-link " aria-current="page" href="{{ self.path() }}/index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link " aria-current="page" href="{{ self.path() }}/#">Blog</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link " aria-current="page" href="{{ self.path() }}/pages/work.html">Works</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link " aria-current="page" href="{{ self.path() }}/pages/about.html">About</a>
+                    </li>
                 </ul>
           </div>
         </div>
     </nav>
+
     <!-- profile image-->
     <div id="profile_img">
-        {% block profile_img %} {% endblock %} 
+        <img src="{{ self.path() }}/assets/{% block h_img %}{% endblock %}" class="rounded-circle" alt="img" width="150px">
     </div>
 
     {% block content %} {% endblock %} 
 </div>
 </div> <!--for footer line in post page-->
+
 <!--footer-->
 <footer id="main_footer">
   <hr>
-  <a href="https://www.linkedin.com/in/fahim-asharaf-b10433a2/" target="_blank"><i class="fab fa-linkedin"></i></a>
-  <a href="https://github.com/fahimkk" target="_blank"><i class="fab fa-github-square"></i></a>
-  <a href="https://www.instagram.com/fahimasharaf/" target="_blank"><i class="fab fa-instagram-square"></i></a>
-  <p>&copy; 2021 Fahim kk</p>
+  <a href="{% block linkedin %}{% endblock %}" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="{% block github %}{% endblock %}" target="_blank"><i class="fab fa-github-square"></i></a>
+  <a href="{% block instagram %}{% endblock %}" target="_blank"><i class="fab fa-instagram-square"></i></a>
+  <p>
+      &copy; 2021 {% block footer_name %}{% endblock %} 
+  </p>
 </footer>
 
 </body>

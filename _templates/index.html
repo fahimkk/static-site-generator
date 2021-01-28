@@ -1,34 +1,36 @@
 {% extends "layout.html" %} 
+
 <!--css files from asset folder-->
-{% block css %}
-<link rel="stylesheet" href="assets/bootstrap.min.css">
-<link rel="stylesheet" href="assets/style_{{ mode }}.css">
+{% block path %}.{% endblock %}
+
+<!--pass info.yaml details to layout through all the pages-->
+{% block h_img %}
+{{ info.h_img }}
 {% endblock %}
 
-<!--navbar pages-->
-{% block navbar%}
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="index.html">Home</a>
-</li>
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="#">Blog</a>
-</li>
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="pages/work.html">Works</a>
-</li>
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="pages/about.html">About</a>
-</li>
+{% block linkedin %}
+{{ info.linkedin }}
 {% endblock %}
 
-{% block profile_img%}
-<img src="assets/fahim.jpg" class="rounded-circle" alt="img" width="150px">
+{% block github %}
+{{ info.github }}
 {% endblock %}
+
+{% block instagram %}
+{{ info.instagram }}
+{% endblock %}
+
+{% block footer_name %}
+{{ info.footer_name }}
+{% endblock %}
+
 
 {% block content %}
 <div>   
     <!--name shows only in index(home) page, for post it shows post title-->
-    <p id="profile_name">Fahim</p>
+    <p id="profile_name">
+      {{ info.nick_name }}
+    </p>
 
     <!--Page name-->
     <div class="pt-4" id="page_heading">

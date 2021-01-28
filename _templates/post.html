@@ -1,30 +1,29 @@
 {% extends "layout.html" %}
 
 <!--css files from asset folder-->
-{% block css %}
-<link rel="stylesheet" href="../assets/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/style_{{ post.mode }}.css">
+{% block path %}..{% endblock %}
+
+<!--pass info.yaml details to layout through all the pages-->
+{% block h_img %}
+{{ info.h_img }}
 {% endblock %}
 
-<!--navbar page link-->
-{% block navbar%}
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="../index.html">Home</a>
-</li>
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="#">Blog</a>
-</li>
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="../pages/work.html">Works</a>
-</li>
-<li class="nav-item active">
-  <a class="nav-link " aria-current="page" href="../pages/about.html">About</a>
-</li>
+{% block linkedin %}
+{{ info.linkedin }}
 {% endblock %}
 
-{% block profile_img%}
-<img src="../assets/fahim.jpg" class="rounded-circle" alt="img" width="150px">
+{% block github %}
+{{ info.github }}
 {% endblock %}
+
+{% block instagram %}
+{{ info.instagram }}
+{% endblock %}
+
+{% block footer_name %}
+{{ info.footer_name }}
+{% endblock %}
+
 
 {% block content %}
 <!--Post title -->
@@ -35,11 +34,11 @@
 <div class="row" >
 <!--left side - profile details-->
   <div class="col-3" id="details">
-    <img src="../assets/fahim.jpg" class="rounded-circle" alt="img" width="100px">
-    <h6><small>Fahim Asharaf</small></h6>
-    <a href="https://www.linkedin.com/in/fahim-asharaf-b10433a2/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/fahimkk" target="_blank"><i class="fab fa-github-square"></i></a>
-    <a href="https://www.instagram.com/fahimasharaf/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+    <img src="../assets/{{ info.p_img }}" class="rounded-circle" alt="img" width="100px">
+    <h6><small>{{ info.name }}</small></h6>
+    <a href="{{ info.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="{{ info.github }}" target="_blank"><i class="fab fa-github-square"></i></a>
+    <a href="{{ info.instagram }}" target="_blank"><i class="fab fa-instagram-square"></i></a>
     <p id="time_date">
       {{ post.time }}
       <br>
