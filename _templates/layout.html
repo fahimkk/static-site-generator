@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahim</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{% block path %}{% endblock %}/assets/bootstrap.min.css">
     <link rel="stylesheet" href="{{ self.path() }}/assets/style_dark.css">
