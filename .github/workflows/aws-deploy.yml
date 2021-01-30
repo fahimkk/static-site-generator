@@ -22,6 +22,7 @@ jobs:
           sudo apt-get install python3-pip
           pip3 install markdown2
           pip3 install jinja2
+          pip3 install pyyaml
     - name: run main.py file to create html files
       run: |
           python3 main.py
