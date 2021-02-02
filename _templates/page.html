@@ -5,6 +5,10 @@
 
 {% block path %}..{% endblock %}
 
+{% block mode %}
+{{ page.mode }}
+{% endblock %}
+
 <!--pass info.yaml details to layout through all the pages-->
 {% block h_img %}
 {{ info.h_img }}

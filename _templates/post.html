@@ -7,6 +7,11 @@
 {% block path %}..{% endblock %}
 
 <!--pass info.yaml details to layout through all the pages-->
+
+{% block mode %}
+{{ post.mode }}
+{% endblock %}
+
 {% block h_img %}
 {{ info.h_img }}
 {% endblock %}
@@ -36,14 +41,14 @@
 <!--Start Grid System-->
 <div class="row" >
 <!--left side - profile details-->
-  <div class="col-3" id="details">
+  <div class="col-2" id="details">
     <img src="../assets/{{ info.p_img }}" class="rounded-circle" alt="img" width="100px">
     <h6><small>{{ info.name }}</small></h6>
     <a href="{{ info.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="{{ info.github }}" target="_blank"><i class="fab fa-github-square"></i></a>
     <a href="{{ info.instagram }}" target="_blank"><i class="fab fa-instagram-square"></i></a>
     <p id="time_date">
-      {{ post.time }}
+      {{ post.time }} read
       <br>
       {{ post.date }}
     </p>
@@ -59,7 +64,7 @@
     </p>
   </div>
 <!--right side - post content-->
-  <div class="col-9" id="post_content">
+  <div class="col-10" id="post_content">
       {{ post.content }}
   </div>
     {% endblock %}

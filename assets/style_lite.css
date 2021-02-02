@@ -1,5 +1,5 @@
 /*MODE: light*/
-@media(max-width:676px){
+@media(max-width:992px){
   #details{
     display: none;
   }
@@ -12,10 +12,17 @@
     width: 100%;
   }
 }
-@media(min-width:676px){
+@media(min-width:992px){
   #navbar{
     height: 40px;
     width: 300px;
+  }
+  #main_container{
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+  #post_content{
+    padding-left: 80px;
   }
 }
 
@@ -117,7 +124,7 @@ color: #555555;
 #post_heading{
 text-align: left; 
 /*padding: top right bottom left*/
-padding:50px 0px 20px 70px;
+padding:50px 0px 20px 0px;
 font-family: 'Times New Roman', Times, serif;
 font-style: italic;
 color: #555555;
@@ -130,7 +137,7 @@ font-weight: 600;
 }
 
 #details{
-padding-left: 60px;
+padding-left: 40px;
 text-align: center;
 }
 #details i{
@@ -161,6 +168,37 @@ text-align: center;
 /*color white*/
 #time_date{
   padding-top: 20px;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 3mm;
   font-style: italic;
+}
+
+/*================================================*/
+/*Blog page*/
+#blog_time_date{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3.5mm;
+  font-style: italic;
+  text-align: left;
+  padding-top: 5px;
+}
+#blog_hr{
+  height: 3px;
+}
+#blog_year{
+  color: #555555;
+}
+.display-7{
+  font-weight: bold;
+}
+#back_to_top{
+  text-align: right;
+}
+#back_to_top a{
+  text-align: right;
+  font-size: 12px;
+  text-decoration: none;
+}
+#back_to_top a:hover{
+  color: #2B8388;
 }

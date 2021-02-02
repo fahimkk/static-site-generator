@@ -7,7 +7,7 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{% block path %}{% endblock %}/assets/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ self.path() }}/assets/style_dark.css">
+    <link rel="stylesheet" href="{{ self.path() }}/assets/style_{% block mode %}{%endblock%}.css">
 
     <!--script for social media icon-->
     <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@
                     <a class="nav-link " aria-current="page" href="{{ self.path() }}/index.html">Home</a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link " aria-current="page" href="{{ self.path() }}/#">Blog</a>
+                    <a class="nav-link " aria-current="page" href="{{ self.path() }}/blog.html">Blog</a>
                     </li>
                     <li class="nav-item active">
                     <a class="nav-link " aria-current="page" href="{{ self.path() }}/pages/work.html">Works</a>
