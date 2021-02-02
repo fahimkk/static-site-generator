@@ -3,6 +3,7 @@ layout: post
 title: Jekyll Tutorial
 permalink: jekyll-tutorial
 image: tutorial.png
+date: December 27, 2020
 ---
 
 ## Folder Structure

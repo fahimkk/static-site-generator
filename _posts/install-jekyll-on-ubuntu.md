@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Install Jekyll on Ubuntu
+title: Install Jekyll on Ubuntu without completing - to check the length of the line
 permalink: install-jekyll-on-ubuntu
 image: install.png
+date: December 25, 2020
 ---
 
 ## To run on server
