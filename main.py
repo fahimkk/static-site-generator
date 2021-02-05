@@ -26,9 +26,11 @@ by default : dark
 MODE = "dark"
 
 # for personal details
+favicon = False
 with open('info.yaml') as f:
     info = yaml.safe_load(f)
-
+    if info['favicon']:
+        favicon = True
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
 # Loop through all the markdown files from posts directory
@@ -166,6 +168,13 @@ for page in PAGES:
 # copy to the _site
 os.makedirs('assets', exist_ok=True)
 cp_cmd = "cp -r assets _site"
+# copy favicon.ico to _site folder directly
+if favicon:
+    cp_cmd += "; cp -r assets/favicon.ico _site" 
 os.popen(cp_cmd)
+
+# Check whether a favicon.ico is added in assets folder or not
+# by checking true/false in info.yaml file
+
 
 # ============================================================

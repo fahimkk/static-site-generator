@@ -15,3 +15,6 @@ footer_name: Fahim KK
 linkedin: https://www.linkedin.com/in/fahim-asharaf-b10433a2/
 github: https://github.com/fahimkk
 instagram: https://www.instagram.com/fahimasharaf/
+
+# true if you added a favicon.ico in assets folder, else false
+favicon: true 
