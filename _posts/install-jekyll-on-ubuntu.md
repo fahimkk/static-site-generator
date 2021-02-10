@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Install Jekyll on Ubuntu without completing - to check the length of the line
+title: Install Jekyll on Ubuntu
 permalink: install-jekyll-on-ubuntu
 image: install.png
 date: December 25, 2020
@@ -12,7 +12,7 @@ Change the directory into the newly created jekyll folder and run the following 
 
 For first time use _bundle exec_,
 
-```
+```bash
 bundle exec jekyll serve
 ```
 

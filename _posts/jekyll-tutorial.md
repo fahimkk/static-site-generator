@@ -35,11 +35,11 @@ We can add `Themes` or `Plugins` by adding the version inside this Gemfile.
 ### **Front Matter**
 
 Front Matter is basically just information that we store about the _pages_ of our site. All the pages in our jekyll website have front matter, which is at the top of the file.
-It contains the information like titles, date, or auther etc.,
+It contains the information like titles, date, or author etc.,
 
 Front Matter can be written in two languages either in **YAML** or **JSON**
 
-```
+```yaml
 ---
 layout: post
 title: "Welcome To Jekyll!"
@@ -61,7 +61,7 @@ we can change the term update by changing the _categories_ section.
 
 We can define custom front matter variables, and we can also access these variables in the jekyll layouts.
 
-```
+```yaml
 author: "Name"
 ```
 
@@ -71,7 +71,7 @@ author: "Name"
 
 Default Front Matter is basically the Front Matter that we can define in our `_config.yml` file, that front matter will apply to either all of our pages or some of our pages by default.
 
-```
+```yaml
 defaults:
   -
     Scope:
@@ -100,7 +100,7 @@ We can create the blog posts directly inside the \_posts folder or the sub-folde
 
 For posts we can use both **Markdown** and **HTML** format.
 
-```
+```yaml
 ---
 add Front Matter
 ---
@@ -121,7 +121,7 @@ There is no need to follow the naming convention to save a file in \_draft folde
 
 To show the files inside the \_draft folder in the web page run the serer with `--draft` flag
 
-```
+```bash
 jekyll serve --draft
 ```
 
@@ -133,11 +133,11 @@ When you served up a draft it will shows the default date (current date) in both
 
 When you are creating a jekyll blog, you gonna have two type of webpages in your website.
 
-Blog post: Which are more commenly refered to as posts, and also have general pages like About, Contact, etc. Basically these pages in your website are'nt blogs.
+Blog post: Which are more commonly referred to as posts, and also have general pages like About, Contact, etc. Basically these pages in your website aren't blogs.
 
 Pages will create inside the root directory of our project just like markdown file or html file.
 
-```
+```yaml
 ---
 Front matter
 ---
@@ -172,7 +172,7 @@ When you change the categories or date in the Front matter section the URL will 
 We need to restart the server to see the changes. Here comes the importants of `permalinks`.
 permalinks will add inside the front matter.
 
-```
+```yaml
 layout: post
 date: 2020-12-30 21:02:48 +0530
 categories: jekyll
@@ -186,18 +186,18 @@ Now the URL looks like
 
 We can access certain variables inside this permalinks.
 
-```
+```yaml
 permalinks: /:categories
 ```
 
-The `collen (:)` signifies that we want use a variable.
+The `colon (:)` signifies that we want use a variable.
 Now the URL using the category variable, here 'jekyll' is the category variable. Spaces between categories will convert into `/` in URL.
 
 > localhost:port/jekyll
 
 Lets see an example with variables and custom extension for title
 
-```
+```yaml
 title: "blog"
 layout: post
 date: 2020-12-30 21:02:48 +0530
@@ -223,19 +223,19 @@ Usage:
 
 1. Under the `Usage` section the readme section copy the theme name,
 
-```
+```yaml
 theme: theme_name
 ```
 
 2. Open up the `Gemfile` in a text editor, (this file allows you to specify the dependencies) and paste the theme name
 
-```
+```yaml
 gem "theme_name"
 ```
 
 3. Open the `terminal`, close the server and run
 
-```
+```bash
 bundle install
 ```
 
@@ -243,23 +243,23 @@ this will install the all of the gems inside the Gemfile.
 
 3. Open `_config.yml`, update the theme variable
 
-```
+```yaml
 theme: theme_name
 ```
 
 4. restart the jekyll server
 
-```
+```bash
 bundle exec jekyll server
 ```
 
 > This may show some errors, because the theme may not have the layout (post, page, home) that we used. These layout are from the default minima theme.
 
-> To know the availble layout, under the github page of the theme, select `_layouts` file.
+> To know the available layout, under the github page of the theme, select `_layouts` file.
 > Replace the new layouts with our old layouts in our posts and pages.
 
 ---
 
 ### **Layouts**
 
-Layouts are basically just skeltons of the html code that you can used to define the looks and the feel of the different types of pages on your sites or just the entire site in general.
+Layouts are basically just skeleton of the html code that you can used to define the looks and the feel of the different types of pages on your sites or just the entire site in general.
