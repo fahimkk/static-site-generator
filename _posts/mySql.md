@@ -17,13 +17,13 @@ and SQL for the most part is just that it's a query language to do things like s
 MySQL is a leading database for web applications and it's used in small business websites all the way to very large scale enterprise applications, so you can use it for just about anything, and it's used with multiple languages pretty much any programming language, but very popular with the languages that are used highly in web development like PHP, nodejs (JavaScript), Python, C#, etc.
 And it's completely cross-platform so you can installed on Linux, Windows or Mac.
 
-## Relational Database
+### Relational Database
 
 A relational database (RDBMS) is based on the relational model of data, like I said majority of the databases use SQL to manage them.
 RDBMS uses `tables` to store your data and this tables have `columns` and `rows` similar to what you'd see in like an Excel spreadsheet.
 Tables and fields can relate to each other through `keys`.
 
-## Common Data Types
+### Common Data Types
 
 - Numeric &nbsp; &nbsp; &nbsp;INT, TINYINT, BIGINT, FLOAT
 - String &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; VARCHAR, TEXT, CHAR
@@ -34,7 +34,7 @@ TINYINT normally used for bool values, `0 for false and 1 for true`
 
 VARCHAR is normally for small texts (below 255), and for larger text we use TEXT (max of 65,000 characters).
 
-# Installation & Environment
+## Installation & Environment
 
 Locally you can install standalone server of MySQL this is what I'll be showing in this post,
 but you can also install software suites like XAMPP, MAMP, WAMP/LAMP which they come with an Apache web server, PHP which is a programming language, MySQL and some other stuff as well, Usually they used for local development.
@@ -45,7 +45,7 @@ they pretty much give you a terminal or a Linux container and you can access it 
 As far as managing your server or managing your databases there's different ways to do this, so with MySQL you get a shell program that you login through your `terminal or command line`, you have desktop tools such as `MySQL workbench` and you also have web-based tools like `PHPMyAdmin` if you are installed XAMPP, WAMP/LAMP or MAMP.
 In PHPMyAdmin you can log in to the program through your browser and you can actually manage your database from there in a graphical interface.
 
-# Install on Ubuntu using Terminal
+## Install on Ubuntu using Terminal
 
 ```bash
 sudo apt update
@@ -62,7 +62,7 @@ mysql --version
 
 which will give you the version of my sql installed on your ubuntu system.
 
-# Configure Mysql
+## Configure Mysql
 
 If you wanna go with the root password you can also go,
 but if you wanna to set your password yourself you could also do that.
@@ -93,7 +93,7 @@ You can change these credentials in future with the same above command.
 So you can see that it's all done now.
 So we have installed Mysql and now we have also changed the password and we have done the settings that we waned to.
 
-# Get starts with Mysql
+## Get starts with Mysql
 
 To go to mysql console or to login
 
@@ -119,7 +119,7 @@ You can clear the terminal with `Ctrl l`
 
 To exit from mysql interface you can use `quit` command.
 
-# Create a new User
+## Create a new User
 
 Once you have access to the MySQL prompt, you can create a new user with a CREATE USER statement. These follow this general syntax:
 
@@ -166,7 +166,7 @@ To check the privileges for a certain user
 SHOW GRANTS FOR 'username'@'host';
 ```
 
-# Create a Database
+## Create a Database
 
 To see the databases you have
 
@@ -197,7 +197,7 @@ To remove a table
 DROP DATABASE database_name;
 ```
 
-# Creating Tables
+## Creating Tables
 
 To create a table
 

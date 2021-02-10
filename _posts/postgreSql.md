@@ -8,7 +8,7 @@ PostgreSQL is a relational database management system that provides an implement
 It's a popular choice for many small and large projects,
 and it has the advantages of being standards compliant and having many advanced features like reliable transactions and concurrency without read blocks.
 
-# Install PostgreSQL on Ubuntu 20.04
+## Install PostgreSQL on Ubuntu 20.04
 
 Use the terminal to install PostgreSQL
 
@@ -26,7 +26,7 @@ sudo apt install postgresql postgresql-contrib
 
 Now you have installed postgresql on your machine.
 
-# PostgreSQL Roles
+## PostgreSQL Roles
 
 Database access permissions within PostgreSQL are handled with the concept of roles. A role can represent a database user or a group of database users.
 
@@ -64,7 +64,7 @@ sudo -u postgres psql
 
 This will log you directly into Postgres without the intermediary `bash` shell in between.
 
-# Creating a New Role
+## Creating a New Role
 
 You can create new roles from the command line with the `createuser` command.
 The `--interactive` flag will prompt you for the name of the new role and also ask whether it should have superuser permissions.
@@ -95,7 +95,7 @@ You can access more about additional flags of a command from `man` page. For exa
 man createuser
 ```
 
-# Creating a New Database
+## Creating a New Database
 
 If you created a user with username user_1, that role will attempt to connect to a database which is also called “user_1” by default.
 You can create the appropriate database with the `createdb` command.
@@ -116,7 +116,7 @@ sudo -u postgres createdb database_name
 
 instead of postgres you can also use role name (username) who has create database privilege
 
-# Login with new user
+## Login with new user
 
 To log in with `ident` based authentication, you’ll need a Linux user with the same name as your Postgres role and database.
 
@@ -138,7 +138,7 @@ If you want your user to connect to a different database, you can do so by speci
 psql -d postgres
 ```
 
-# Creating Tables
+## Creating Tables
 
 The basic syntax for creating tables is as follows:
 
