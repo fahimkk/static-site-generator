@@ -139,7 +139,6 @@ color: white;
 #post_heading{
 text-align: left; 
 /*padding: top right bottom left*/
-  /*77777777777777777777777777777777777*/
 padding:50px 0px 20px 0px;
 font-family: 'Times New Roman', Times, serif;
 font-style: italic;
@@ -152,9 +151,12 @@ color: white;
 #post_content{
 color: white;
 }
-
+.codehilite{
+background-color:#555555 ;
+padding: 5px 0px 0px 20px;
+color: white;
+}
 #details{
-  /*77777777777777777777777777777777777*/
 padding-left: 40px;
 text-align: center;
 }
@@ -175,7 +177,7 @@ text-align: center;
   letter-spacing: 0.06em;
   color: white;
 }
-/*Categoreis*/
+/*Categories*/
 /*color white*/
 #cat{
   padding-top: 10px;
