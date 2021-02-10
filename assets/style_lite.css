@@ -3,14 +3,21 @@
   #details{
     display: none;
   }
+  #navbar{
+    width: 100%;
+  }
+  #post_img_link{
+    padding-left: 20px;
+  }
+  #post_img_link img{
+    height: 150px;
+  }
   #post_content{
     width: auto;
     padding-left: 30px;
     padding-right: 30px;
   }
-  #navbar{
-    width: 100%;
-  }
+
 }
 @media(min-width:992px){
   #navbar{
@@ -53,8 +60,12 @@ height: 0;
 }
 #post_img_link{
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-right: 30px;
+}
+#post_img_link img{
+  width: 300px;
+  height: 130px;
 }
 #post_title{
   text-align: left;
