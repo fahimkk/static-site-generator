@@ -4,7 +4,7 @@ don't put value in quotes
 date - eg: Month day, Year (by default current date)
 time - time required to complete - eg: 3 min (by default 0 min )
 title - title of the post (by default file name without extension)
-tags - tages related to the post (by default ... )
+tags - tags related to the post (by default ... )
 permalink - name shows in the url link and
     template file saves the post in that name
     (by default file name without extendsion)
@@ -96,7 +96,7 @@ with open('_templates/layout.html', 'w') as f:
 
 # Pass metadata to index.html page
 posts_metadata = [POSTS[post].metadata for post in POSTS]
-# posts_metadata is a list, so we can'nt access posts.mode in index.html
+# posts_metadata is a list, so we can't access posts.mode in index.html
 index_html = index_template.render(posts=posts_metadata, mode=MODE, info=info)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
@@ -170,7 +170,7 @@ os.makedirs('assets', exist_ok=True)
 cp_cmd = "cp -r assets _site"
 # copy favicon.ico to _site folder directly
 if favicon:
-    cp_cmd += "; cp -r assets/favicon.ico _site" 
+    cp_cmd += "; cp -r assets/favicon.ico _site"
 os.popen(cp_cmd)
 
 # Check whether a favicon.ico is added in assets folder or not
