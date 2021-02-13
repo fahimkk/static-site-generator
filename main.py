@@ -161,38 +161,38 @@ for project in os.listdir("_projects"):
         PROJECTS = {}
         # Check whether the directory is empty or not
         directories = os.listdir(file_path)
-        if len(directories) != 0:
-            for markdown_post in os.listdir(file_path):
-                print(markdown_post)
-                new_file_path = os.path.join(file_path, markdown_post)
-                with open(new_file_path, 'r') as f:
-                    PROJECTS[markdown_post] = \
-                        markdown2.markdown(f.read(), extras=['metadata',
-                                                            'fenced-code-blocks',
-                                                            'code-color'])
-            # DEFAULT DATA FOR PROJECTS
-            # title - if title is not given use filename without extn
-            PROJECTS[markdown_post].metadata.setdefault(
-                'title', markdown_post[:-3])
-            # permalink - if permalink is not given use filename without extn
-            PROJECTS[markdown_post].metadata.setdefault(
-                'permalink', markdown_post[:-3])
-            # CREATE A PAGE FOR DIRECTORIES INSIDE THE _PROJECT DIR
-            # IT SHOWS CONTENTS IN PROJECTS DICT (contents
-            # inside that directory)
-            projects_metadata = [PROJECTS[proj].metadata for proj in PROJECTS]
-            file_data["pageTitle"] = project
-            file_data["filePath"] = f"projects/{project}"
-            file_data["assetPath"] = ".."
-            # render
-            projects_html = index_template.render(posts=projects_metadata,
-                                                  info=info,
-                                                  file_data=file_data)
-            # save html files
-            projects_filepath = f"_site/projects/{project}.html"
-            os.makedirs(os.path.dirname(projects_filepath), exist_ok=True)
-            with open(projects_filepath, 'w') as f:
-                f.write(projects_html)
+        for markdown_post in os.listdir(file_path):
+            print("===========")
+            print(markdown_post)
+            print("===========")
+            new_file_path = os.path.join(file_path, markdown_post)
+            with open(new_file_path, 'r') as f:
+                PROJECTS[markdown_post] = \
+                    markdown2.markdown(f.read(), extras=['metadata',
+                                                         'fenced-code-blocks',
+                                                         'code-color'])
+                # DEFAULT DATA FOR PROJECTS
+                # title - if title is not given use filename without extn
+                PROJECTS[markdown_post].metadata.setdefault(
+                    'title', markdown_post[:-3])
+                # permalink - if permalink is not given use
+                # filename without extension
+                PROJECTS[markdown_post].metadata.setdefault(
+                    'permalink', markdown_post[:-3])
+        # CREATE A PAGE FOR DIRECTORIES INSIDE THE _PROJECT DIR
+        # IT SHOWS CONTENTS IN PROJECTS DICT (contents inside that directory)
+        projects_metadata = [PROJECTS[proj].metadata for proj in PROJECTS]
+        file_data["pageTitle"] = project
+        file_data["filePath"] = f"projects/{project}"
+        file_data["assetPath"] = ".."
+        # render
+        projects_html = index_template.render(posts=projects_metadata,
+                                              info=info, file_data=file_data)
+        # save html files
+        projects_filepath = f"_site/projects/{project}.html"
+        os.makedirs(os.path.dirname(projects_filepath), exist_ok=True)
+        with open(projects_filepath, 'w') as f:
+            f.write(projects_html)
     else:
         # else it's a markdown file
         # parse it's contents and add into PROJECTS_DIR dict.
@@ -282,3 +282,6 @@ os.popen(cp_cmd)
 
 # Check whether a favicon.ico is added in assets folder or not
 # by checking true/false in info.yaml file
+
+
+# ============================================================
