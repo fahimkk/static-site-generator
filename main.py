@@ -9,6 +9,8 @@ permalink - name shows in the url link and
     template file saves the post in that name
     (by default file name without extendsion)
 image - image name with extension - to show in home page
+
+Save the image name for project directories same as the dir name
 """
 
 import os
@@ -31,6 +33,7 @@ with open('info.yaml') as f:
     info = yaml.safe_load(f)
     if info['favicon']:
         favicon = True
+
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
 # Loop through all the markdown files from posts directory
@@ -47,8 +50,7 @@ for markdown_post in os.listdir('_posts'):
         # key : markdown_post, ie file name
         # value: content (string format html)
         # POSTS['markdown_post'].metadata gives a dict of metadata
-
-# DEFAULT DATA FOR POSTS
+    # DEFAULT DATA FOR POSTS
         # date (Current date) if date is not given in the post
         # strftime returns the string representation of date.
         POSTS[markdown_post].metadata.setdefault(
@@ -84,37 +86,142 @@ index_template = env.get_template('index.html')
 post_template = env.get_template('post.html')
 blog_template = env.get_template('blog.html')
 
-"""
-layout_template = env.get_template('layout_tem.html')
-layout_html = layout_template.render(info=info)
-# This file will be removed at the end. ie -
-# - data required for creating pages will be passed through layout.html
-# all the _template extends layout.html file
-with open('_templates/layout.html', 'w') as f:
-    f.write(layout_html)
-"""
+# Create a file_data dict to pass details about file in each page.
+# file_data contains mode, page title,
+# filePath (dir name) for permalink and assetPath
+file_data = {"mode": MODE}
 
+# HOME PAGE
 # Pass metadata to index.html page
 posts_metadata = [POSTS[post].metadata for post in POSTS]
+file_data["pageTitle"] = "Home"
+file_data["filePath"] = "posts"
+file_data["assetPath"] = "."
 # posts_metadata is a list, so we can't access posts.mode in index.html
-index_html = index_template.render(posts=posts_metadata, mode=MODE, info=info)
+index_html = index_template.render(posts=posts_metadata, info=info,
+                                   file_data=file_data)
 # This will pass a list of metadata through the
 # variable posts to our index.html page template
+# Create _site dir if not exists
+os.makedirs('_site', exist_ok=True)
+with open('_site/index.html', 'w') as f:
+    f.write(index_html)
 
+# BLOG PAGE
 # metadata_date: key - date and value list of posts
 metadata_date = collections.defaultdict(list)
 for post in posts_metadata:
     year = datetime.strptime(post['date'], '%B %d, %Y').year
     metadata_date[year].append(post)
 blog_html = blog_template.render(posts=metadata_date, mode=MODE, info=info)
-
-
-# Create _site dir if not exists
-os.makedirs('_site', exist_ok=True)
-with open('_site/index.html', 'w') as f:
-    f.write(index_html)
+# we already created _site dir for index.html file
 with open('_site/blog.html', 'w') as f:
     f.write(blog_html)
+
+# PROJECTS PAGE
+# Create project categories w.r.t the directories inside the_projects dir.
+# save the image name for directories same as the directory name
+
+# In this section we  deal with 3 types of files.
+# 1. main Projects page - contents are directories inside the _projects dir.
+# we have to add metadata manually, that are title, image name, and permalink
+# permalink is needed otherwise we have to edit index.html template.
+# we also need to create pages for the contents inside this project categories.
+# 2. markdown files directly inside the _project file
+# we use PROJECTS_DIR dict for this.
+# 3. markdown files inside the directory inside the _project directory.
+# we use PROJECTS dict for it
+
+# dir_metadata collect the data for main Project page - list of dictionaries.
+# contents in the project page are directories,
+# so we have to add data manually.
+dir_metadata = []
+
+# To get the extension of the image of directories inside _project dir.
+# image name should be same as that of the directory name
+assets_dir = {os.path.splitext(path)[0]: os.path.splitext(path)[1] for path in os.listdir("assets")}
+
+# PROJECT_DIR dict is to store the markdown file directly inside the _projects.
+PROJECTS_DIR = {}
+for project in os.listdir("_projects"):
+    project_dict = {}
+    # title is the directory name
+    project_dict["title"] = project.title()
+    file_path = os.path.join("_projects", project)
+    if os.path.isdir(file_path):
+        # if it's not dir, image name and permalink should pass
+        # with the mardown file or we can add it in default section.
+        project_dict["permalink"] = project
+        if project in assets_dir:
+            project_dict["image"] = project + assets_dir[project]
+
+        # parse markdown files inside the directories in the _project folder
+        # PROJECTS dict is to store the markdown files
+        # inside the directories inside the _projects dir.
+        PROJECTS = {}
+        # Check whether the directory is empty or not
+        directories = os.listdir(file_path)
+        if len(directories) != 0:
+            for markdown_post in os.listdir(file_path):
+                print(markdown_post)
+                new_file_path = os.path.join(file_path, markdown_post)
+                with open(new_file_path, 'r') as f:
+                    PROJECTS[markdown_post] = \
+                        markdown2.markdown(f.read(), extras=['metadata',
+                                                            'fenced-code-blocks',
+                                                            'code-color'])
+            # DEFAULT DATA FOR PROJECTS
+            # title - if title is not given use filename without extn
+            PROJECTS[markdown_post].metadata.setdefault(
+                'title', markdown_post[:-3])
+            # permalink - if permalink is not given use filename without extn
+            PROJECTS[markdown_post].metadata.setdefault(
+                'permalink', markdown_post[:-3])
+            # CREATE A PAGE FOR DIRECTORIES INSIDE THE _PROJECT DIR
+            # IT SHOWS CONTENTS IN PROJECTS DICT (contents
+            # inside that directory)
+            projects_metadata = [PROJECTS[proj].metadata for proj in PROJECTS]
+            file_data["pageTitle"] = project
+            file_data["filePath"] = f"projects/{project}"
+            file_data["assetPath"] = ".."
+            # render
+            projects_html = index_template.render(posts=projects_metadata,
+                                                  info=info,
+                                                  file_data=file_data)
+            # save html files
+            projects_filepath = f"_site/projects/{project}.html"
+            os.makedirs(os.path.dirname(projects_filepath), exist_ok=True)
+            with open(projects_filepath, 'w') as f:
+                f.write(projects_html)
+    else:
+        # else it's a markdown file
+        # parse it's contents and add into PROJECTS_DIR dict.
+        with open(file_path, 'r') as f:
+            PROJECTS_DIR[project] = \
+                markdown2.markdown(f.read(), extras=['metadata',
+                                                     'fenced-code-blocks',
+                                                     'code-color'])
+        # DEFAULT DATA FOR PROJECTS_DIR
+        # title -if title is not given use filename without extn
+        PROJECTS_DIR[project].metadata.setdefault(
+            'title', project[:-3])
+        # permalink -if permalink is not given use filename without extn
+        PROJECTS_DIR[project].metadata.setdefault(
+            'permalink', project[:-3])
+        # TODO - if a markdown file directly inside the _projects directory
+        # which template will use.
+    dir_metadata.append(project_dict)
+
+# data to render Projects page.
+file_data["pageTitle"] = "Projects"
+# path is the folder to store files, so we can use in link.
+file_data["filePath"] = "projects"
+file_data["assetPath"] = "."
+projects_html = index_template.render(posts=dir_metadata, info=info,
+                                      file_data=file_data)
+# already created _site dir for index.html file.
+with open('_site/projects.html', 'w') as f:
+    f.write(projects_html)
 
 # To render individual post pages
 for post in POSTS:
@@ -175,6 +282,3 @@ os.popen(cp_cmd)
 
 # Check whether a favicon.ico is added in assets folder or not
 # by checking true/false in info.yaml file
-
-
-# ============================================================
