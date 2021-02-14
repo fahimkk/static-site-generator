@@ -16,6 +16,7 @@ Save the image name for project directories same as the dir name
 import os
 from datetime import datetime
 import collections
+import re
 
 import markdown2
 import jinja2
@@ -57,7 +58,7 @@ for markdown_post in os.listdir('_posts'):
             'date', datetime.today().strftime('%B %d, %Y'))
         # title -if title is not given use filename without extension
         POSTS[markdown_post].metadata.setdefault(
-            'title', markdown_post[:-3])
+            'title', markdown_post[:-3].title())
         # permalink -if permalink is not given use filename without extension
         POSTS[markdown_post].metadata.setdefault(
             'permalink', markdown_post[:-3])
@@ -162,7 +163,6 @@ for project in os.listdir("_projects"):
         # Check whether the directory is empty or not
         directories = os.listdir(file_path)
         for markdown_post in os.listdir(file_path):
-            print(markdown_post)
             new_file_path = os.path.join(file_path, markdown_post)
             with open(new_file_path, 'r') as f:
                 PROJECTS[markdown_post] = \
@@ -172,7 +172,7 @@ for project in os.listdir("_projects"):
                 # DEFAULT DATA FOR PROJECTS
                 # title - if title is not given use filename without extension
                 PROJECTS[markdown_post].metadata.setdefault(
-                    'title', markdown_post[:-3])
+                    'title', markdown_post[:-3].title())
                 # permalink - if permalink is not given use
                 # filename without extension
                 PROJECTS[markdown_post].metadata.setdefault(
@@ -202,7 +202,7 @@ for project in os.listdir("_projects"):
         # DEFAULT DATA FOR PROJECTS_DIR
         # title -if title is not given use filename without extension
         PROJECTS_DIR[project].metadata.setdefault(
-            'title', project[:-3])
+            'title', project[:-3].title())
         # permalink -if permalink is not given use filename without extension
         PROJECTS_DIR[project].metadata.setdefault(
             'permalink', project[:-3])
@@ -240,6 +240,53 @@ for post in POSTS:
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
     with open(post_filepath, 'w') as f:
         f.write(post_html)
+
+# CHEATSHEET PAGE
+CHEATSHEETS = {}
+for markdown_post in os.listdir("_projects/cheatsheet"):
+    cheatsheet_path = os.path.join("_projects/cheatsheet", markdown_post)
+    with open(cheatsheet_path, 'r') as f:
+        CHEATSHEETS[markdown_post] = \
+            markdown2.markdown(f.read(), extras=['metadata',
+                                                 'fenced-code-blocks',
+                                                 'code-color'])
+    # DEFAULT DATA FOR PROJECTS
+        # title - if title is not given use filename without extension
+        CHEATSHEETS[markdown_post].metadata.setdefault(
+               'title', markdown_post[:-3].title())
+        # permalink - if permalink is not given use
+        # filename without extension
+        CHEATSHEETS[markdown_post].metadata.setdefault(
+               'permalink', markdown_post[:-3])
+
+cheatsheet_template = env.get_template('cheatsheet.html')
+for cheatsheet in CHEATSHEETS:
+    lines = CHEATSHEETS[cheatsheet].split('\n')
+    contents = collections.defaultdict(list)
+    for line in lines:
+        if line.strip().startswith('<h'):
+            # striping <h1> and </h1>
+            heading = line[4:-5].title()
+            continue
+        contents[heading].append(line)
+    heading_content = collections.OrderedDict()
+    for content in contents:
+        heading_content[content] = '\n'.join(contents[content])
+    import pprint
+    pprint.pprint(heading_content)
+
+    file_data["pageTitle"] = os.path.splitext(cheatsheet)[0].title()
+    file_data["assetPath"] = "../.."
+    # file_data["filePath"] is not required here.
+    cheatsheet_html = cheatsheet_template.render(contents=heading_content,
+                                                 info=info,
+                                                 file_data=file_data)
+    post_filepath = '_site/projects/cheatsheet/{permalink}.html'.format(
+        permalink=CHEATSHEETS[cheatsheet].metadata['permalink'])
+    os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
+    with open(post_filepath, 'w') as f:
+        f.write(cheatsheet_html)
+
 # ============================================================
 # to render individual pages.
 # PAGES dict is to store pages from the dir _pages

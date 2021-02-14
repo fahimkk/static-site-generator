@@ -51,8 +51,9 @@
         <!--div for - image and title link-->
             <div id="post_img_link">
               <div class="card">
-                <a href="{{file_data.filePath}}/{{ post.permalink }}.html">
-                  <img src="assets/{{file_data.filePath}}/{{ post.image }}" class="card-img-top" alt="{{ post.image }}">
+                <!--when using file_data.assetPath we can reach to root file, so we can add absolute path-->
+                <a href="{{file_data.assetPath}}/{{file_data.filePath}}/{{ post.permalink }}.html">
+                  <img src="{{file_data.assetPath}}/assets/{{file_data.filePath}}/{{ post.image }}" class="card-img-top" alt="{{ post.image }}">
                 </a>
               </div>
               <h4 id="post_title">
