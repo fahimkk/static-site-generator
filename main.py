@@ -55,10 +55,10 @@ for markdown_post in os.listdir('_posts'):
         # strftime returns the string representation of date.
         POSTS[markdown_post].metadata.setdefault(
             'date', datetime.today().strftime('%B %d, %Y'))
-        # title -if title is not given use filename without extn
+        # title -if title is not given use filename without extension
         POSTS[markdown_post].metadata.setdefault(
             'title', markdown_post[:-3])
-        # permalink -if permalink is not given use filename without extn
+        # permalink -if permalink is not given use filename without extension
         POSTS[markdown_post].metadata.setdefault(
             'permalink', markdown_post[:-3])
         # tags - if tags are not give put ...
@@ -139,7 +139,7 @@ dir_metadata = []
 
 # To get the extension of the image of directories inside _project dir.
 # image name should be same as that of the directory name
-assets_dir = {os.path.splitext(path)[0]: os.path.splitext(path)[1] for path in os.listdir("assets")}
+assets_dir = {os.path.splitext(path)[0]: os.path.splitext(path)[1] for path in os.listdir("assets/projects")}
 
 # PROJECT_DIR dict is to store the markdown file directly inside the _projects.
 PROJECTS_DIR = {}
@@ -162,9 +162,7 @@ for project in os.listdir("_projects"):
         # Check whether the directory is empty or not
         directories = os.listdir(file_path)
         for markdown_post in os.listdir(file_path):
-            print("===========")
             print(markdown_post)
-            print("===========")
             new_file_path = os.path.join(file_path, markdown_post)
             with open(new_file_path, 'r') as f:
                 PROJECTS[markdown_post] = \
@@ -172,7 +170,7 @@ for project in os.listdir("_projects"):
                                                          'fenced-code-blocks',
                                                          'code-color'])
                 # DEFAULT DATA FOR PROJECTS
-                # title - if title is not given use filename without extn
+                # title - if title is not given use filename without extension
                 PROJECTS[markdown_post].metadata.setdefault(
                     'title', markdown_post[:-3])
                 # permalink - if permalink is not given use
@@ -202,10 +200,10 @@ for project in os.listdir("_projects"):
                                                      'fenced-code-blocks',
                                                      'code-color'])
         # DEFAULT DATA FOR PROJECTS_DIR
-        # title -if title is not given use filename without extn
+        # title -if title is not given use filename without extension
         PROJECTS_DIR[project].metadata.setdefault(
             'title', project[:-3])
-        # permalink -if permalink is not given use filename without extn
+        # permalink -if permalink is not given use filename without extension
         PROJECTS_DIR[project].metadata.setdefault(
             'permalink', project[:-3])
         # TODO - if a markdown file directly inside the _projects directory
@@ -223,6 +221,7 @@ projects_html = index_template.render(posts=dir_metadata, info=info,
 with open('_site/projects.html', 'w') as f:
     f.write(projects_html)
 
+# POST PAGE
 # To render individual post pages
 for post in POSTS:
     posts_metadata = POSTS[post].metadata
@@ -244,6 +243,7 @@ for post in POSTS:
 # ============================================================
 # to render individual pages.
 # PAGES dict is to store pages from the dir _pages
+# TODO - delete page directory and create a template for about page
 PAGES = {}
 for markdown_page in os.listdir('_pages'):
     page_path = os.path.join('_pages', markdown_page)
