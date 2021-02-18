@@ -1,20 +1,11 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} 
 
 <!--Title for tab-->
-{% block title %}Blog{% endblock %}
-
+{% block title %}{{ file_data.pageTitle }}{% endblock %}
 <!--css files from asset folder-->
-{% block path %}.{% endblock %}
+{% block path %}{{file_data.assetPath}}{% endblock %}
 
 <!--pass info.yaml details to layout through all the pages-->
-
-{% block mode %}
-{{ mode }}
-{% endblock %}
-
-{% block h_img %}
-{{ info.h_img }}
-{% endblock %}
 
 {% block linkedin %}
 {{ info.linkedin }}
@@ -34,49 +25,49 @@
 
 
 {% block content %}
+<div class="container-fluid pb-5" style="background-color: #eeeaea;">
+<!--page title-->
+<h1 id="page_title">BLOG</h1>
 
-  <!--Page name-->
-<div class="mt-5" id="page_heading">
-  <h1>
-    Blog 
-  </h1>
-</div>
+<!--padding for contents-->
+<div class="container-fluid" id="blog_container">
 
-{% for year, posts in posts.items() %}
-  <div id="blog_year">
-    <h2 class="display-7"> {{ year }} </h2>
-  </div>
+  {% for year, posts in posts.items() %} 
+    <h2 class="display-7" id="blog_year"> {{year}} </h2>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for post in posts %}
-      <div class="col">
-      <!--div for - image and title link-->
-        <div id="post_img_link">
-          <div class="card">
-            <a href="posts/{{ post.permalink }}.html">
-                  <img src="assets/blog/{{ post.image }}" class="card-img-top" alt="{{ posts.image }}">
-            </a>
+    <div class="row row-cols-1 row-cols-md-4 g-2">
+
+      {% for post in posts %} 
+        <div class="col me-5 mb-3 shadow" style="background-color: #f3f3f3;">
+          <!--div for - image and title link-->
+          <div id="post_img_link">
+            <div class="card">
+              <a href="posts/{{post.permalink}}.html">
+                <img src="assets/blog/{{post.image}}" class="card-img-top" alt="{{post.title}}">
+              </a>
+            </div>
+            <h4 id="post_title">
+              <a href="posts/{{post.permalink}}.html" id="post_title_link">{{post.title}}</a>
+            </h4>
+            <p id="blog_time_date">
+              <!--&nbsp is for space-->
+              {{post.time}} read &nbsp; &middot; &nbsp; {{post.date}}
+            </p>
           </div>
-          <h4 id="post_title">
-            <a href="posts/{{ post.permalink }}.html" id="post_title_link">{{ post.title }}</a>
-          </h4>
-          <p id="blog_time_date">
-            <!--&nbsp is for space-->
-            {{ post.time }} read &nbsp; &middot; &nbsp; {{ post.date }}
-          </p>
         </div>
-      </div>
-    {% endfor %}
-  </div>
-  <!--loop.last return true if it is the last iteration-->
-  {% if not loop.last %}
-  <div id="back_to_top">
-    <a  href="#page_heading">
-      BACK TO TOP &UpArrow;
-    </a>
-  </div>
-    <hr id="blog_hr">
-  {% endif %}
-{% endfor %}
+      {% endfor %}
+    </div>
+    <!--loop.last return true if it is the last iteration-->
 
+    {% if not loop.last %}
+      <div id="back_to_top">
+        <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+      </div>
+      <hr id="blog_hr_line">
+    {% endif %}
+
+  {% endfor %}
+
+</div>
+</div>
 {% endblock %}
