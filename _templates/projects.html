@@ -1,0 +1,59 @@
+{% extends "layout.html" %} 
+
+<!--Title for tab-->
+{% block title %}{{ file_data.pageTitle }}{% endblock %}
+<!--css files from asset folder-->
+{% block path %}{{file_data.assetPath}}{% endblock %}
+
+<!--pass info.yaml details to layout through all the pages-->
+
+{% block linkedin %}
+{{ info.linkedin }}
+{% endblock %}
+
+{% block github %}
+{{ info.github }}
+{% endblock %}
+
+{% block instagram %}
+{{ info.instagram }}
+{% endblock %}
+
+{% block footer_name %}
+{{ info.footer_name }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid pb-5" style="background-color:#E6DACE;">
+
+<!-- Page title -->
+<h1 id="page_title">PROJECTS</h1>
+
+<!-- to make projects list at the center in full screen-->
+<div class="container" id="projects_container">
+  {% for post in posts %}
+    <div class="card mb-5 mt-5 shadow p-2 mb-3 " style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="assets/projects/{{post.image}}" alt="{{post.title}}" width="100%", height="100%">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="projects/{{ post.permalink }}.html" id="post_title_link">
+                {{ post.title }}
+              </a>
+            </h5>
+<!--TODO-->
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+</div>
+
+{% endblock %}
