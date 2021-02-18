@@ -86,8 +86,9 @@ env = jinja2.Environment(loader=jinja2.PackageLoader('main', '_templates'))
 # 1st arg - name of python file
 # 2nd arg - directory name where template files are located
 index_template = env.get_template('index.html')
-post_template = env.get_template('post.html')
 blog_template = env.get_template('blog.html')
+projects_template = env.get_template('projects.html')
+post_template = env.get_template('post.html')
 
 # Create a file_data dict to pass details about file in each page.
 # file_data contains mode, page title,
@@ -207,9 +208,8 @@ for project in os.listdir("_projects"):
 # data to render Projects page.
 file_data["pageTitle"] = "Projects"
 # path is the folder to store files, so we can use in link.
-file_data["filePath"] = "projects"
 file_data["assetPath"] = "."
-projects_html = index_template.render(posts=projects_metadata, info=info,
+projects_html = projects_template.render(posts=projects_metadata, info=info,
                                       file_data=file_data)
 # already created _site dir for index.html file.
 with open('_site/projects.html', 'w') as f:
