@@ -255,8 +255,32 @@ for markdown_post in os.listdir("_cheatsheets"):
 # COLLECT CHEETSHEET DATA FOR HOME PAGE
 cheatsheets_metadata = [CHEATSHEETS[cheatsheet].metadata for cheatsheet in CHEATSHEETS]
 
+# CHEATSHEETS PAGE
+# A list of data which contains Category as key and item list as value
+
+category = collections.defaultdict(list)
+for cheatsheet in cheatsheets_metadata:
+    cat = cheatsheet['category'].title()
+    category[cat].append(cheatsheet)
+
+# sort categories based on alphabetical order
+categories = collections.OrderedDict()
+for cat in sorted(category):
+    categories[cat] = category[cat]
+file_data['pageTitle'] = 'CheatSheet'
+file_data['assetPath'] = '.'
+
+cheatsheets_template = env.get_template('cheatsheets.html')
+cheatsheets_html = cheatsheets_template.render(categories=categories,
+                                               cheatsheets=cheatsheets_metadata,
+                                               info=info, file_data=file_data)
+
+# we already created _site dir for index.html file
+with open('_site/cheatsheets.html', 'w') as f:
+    f.write(cheatsheets_html)
+
 # CHEATSHEET POST PAGE
-cheatsheet_template = env.get_template('cheatsheet.html')
+cheatsheets_posts_template = env.get_template('cheatsheets_post.html')
 for cheatsheet in CHEATSHEETS:
     lines = CHEATSHEETS[cheatsheet].split('\n')
     contents = collections.defaultdict(list)
@@ -266,23 +290,21 @@ for cheatsheet in CHEATSHEETS:
             heading = line[4:-5].title()
             continue
         contents[heading].append(line)
-    heading_content = collections.OrderedDict()
+    headingAndContent = collections.OrderedDict()
     for content in contents:
-        heading_content[content] = '\n'.join(contents[content])
-    import pprint
-    pprint.pprint(heading_content)
+        headingAndContent[content] = '\n'.join(contents[content])
 
     file_data["pageTitle"] = os.path.splitext(cheatsheet)[0].title()
-    file_data["assetPath"] = "../.."
+    file_data["assetPath"] = ".."
     # file_data["filePath"] is not required here.
-    cheatsheet_html = cheatsheet_template.render(contents=heading_content,
+    cheatsheets_posts_html = cheatsheets_posts_template.render(contents=headingAndContent,
                                                  info=info,
                                                  file_data=file_data)
-    post_filepath = '_site/cheatsheet/{permalink}.html'.format(
+    post_filepath = '_site/cheatsheets/{permalink}.html'.format(
         permalink=CHEATSHEETS[cheatsheet].metadata['permalink'])
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
     with open(post_filepath, 'w') as f:
-        f.write(cheatsheet_html)
+        f.write(cheatsheets_posts_html)
 
 # RENDERING PAGES
 
