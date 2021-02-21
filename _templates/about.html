@@ -1,0 +1,41 @@
+{% extends "layout.html" %} 
+
+<!--Title for tab-->
+{% block title %}{{ file_data.pageTitle }}{% endblock %}
+<!--css files from asset folder-->
+{% block path %}{{file_data.assetPath}}{% endblock %}
+
+<!--pass info.yaml details to layout through all the pages-->
+
+{% block linkedin %}
+{{ info.linkedin }}
+{% endblock %}
+
+{% block github %}
+{{ info.github }}
+{% endblock %}
+
+{% block instagram %}
+{{ info.instagram }}
+{% endblock %}
+
+{% block footer_name %}
+{{ info.footer_name }}
+{% endblock %}
+
+
+{% block content %}
+
+<!--About Section-->
+<div  id="about_section">
+  <!-- profile image-->
+  <img src="assets/{{info.image}}" class="rounded-circle" alt="img" width="150px">
+  <h6>{{ info.name }}</h6>
+  <div class="mx-auto" style="max-width:650px; padding-top: 20px;">
+    <p>
+      {{content}}
+    </p>
+  </div>
+</div>
+
+{% endblock %}

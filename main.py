@@ -32,7 +32,18 @@ with open('info.yaml') as f:
 file_data = {}
 os.makedirs('_site', exist_ok=True)
 
-# COLLECTING POSTS DATA
+#               COLLECT DATA FROM ALL THE MARKDOWN FILES
+# Parse about.md file, if "abstract" is provided as metadata
+# use it for home page, otherwise take fist line.
+with open('about.md', 'r') as f:
+    about = markdown2.markdown(f.read(), extras=['metadata',
+                                                 'fenced-code-blocks',
+                                                 'code-color'])
+about_abstract = about.metadata['abstract']
+if not about_abstract:
+    about_abstract = about.split('\n\n')[0]
+
+# COLLECTING BLOG POSTS DATA
 # POSTS dict to store blog posts from the directory posts
 POSTS = {}
 # Loop through all the markdown files from posts directory
@@ -179,6 +190,7 @@ for project in os.listdir("_projects"):
         file_data["filePath"] = f"projects/{project}"
         file_data["assetPath"] = ".."
         # render
+        # TODO - selecting template w.r.t project page type.
         projects_html = index_template.render(posts=project_metadata,
                                               info=info, file_data=file_data)
         # save html files
@@ -227,7 +239,11 @@ for post in POSTS:
         'time': post_metadata['time'],
         'tags': post_metadata['tags'],
         }
-    post_html = post_template.render(post=post_data, info=info)
+    file_data['pageTitle'] = post_data['title']
+    file_data['assetPath'] = '..'
+    post_html = post_template.render(post=post_data, 
+                                     info=info,
+                                     file_data=file_data)
     post_filepath = '_site/posts/{permalink}.html'.format(
         permalink=post_metadata['permalink'])
     os.makedirs(os.path.dirname(post_filepath), exist_ok=True)
@@ -314,6 +330,7 @@ file_data["pageTitle"] = "Home"
 file_data["assetPath"] = "."
 # posts_metadata is a list, so we can't access posts.mode in index.html
 index_html = index_template.render(posts=posts_metadata, info=info,
+                                   about_abstract=about_abstract,
                                    file_data=file_data,
                                    projects=projects_metadata,
                                    cheatsheets=cheatsheets_metadata)
@@ -324,34 +341,15 @@ with open('_site/index.html', 'w') as f:
     f.write(index_html)
 
 
-# ============================================================
-# to render individual pages.
-# PAGES dict is to store pages from the dir _pages
-# TODO - delete page directory and create a template for about page
-PAGES = {}
-for markdown_page in os.listdir('_pages'):
-    page_path = os.path.join('_pages', markdown_page)
-    with open(page_path, 'r') as f:
-        PAGES[markdown_page] = \
-            markdown2.markdown(f.read(), extras=['metadata',
-                                                 'fenced-code-blocks',
-                                                 'code-color'])
+file_data["pageTitle"] = "About"
+file_data["assetPath"] = "."
+# posts_metadata is a list, so we can't access posts.mode in index.html
+about_template = env.get_template('about.html')
+about_html = about_template.render(content=about, info=info,
+                                   file_data=file_data)
+with open('_site/about.html', 'w') as f:
+    f.write(about_html)
 
-page_template = env.get_template('page.html')
-
-for page in PAGES:
-    page_metadata = PAGES[page].metadata
-    # page_data dict is used to pass content also
-    page_data = {
-        'content': PAGES[page],
-        'title': page_metadata['title'],
-    }
-    page_html = page_template.render(page=page_data, info=info)
-    page_filepath = '_site/pages/{permalink}.html'.format(
-        permalink=page_metadata['permalink'])
-    os.makedirs(os.path.dirname(page_filepath), exist_ok=True)
-    with open(page_filepath, 'w') as f:
-        f.write(page_html)
 
 # If the assets dir is not present create one and
 # put all the css files and images inside the asset dir
