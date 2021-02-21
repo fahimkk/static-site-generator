@@ -1,20 +1,11 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} 
 
 <!--Title for tab-->
-{% block title %}{{ post.title }}{% endblock %}
-
+{% block title %}{{ file_data.pageTitle }}{% endblock %}
 <!--css files from asset folder-->
-{% block path %}..{% endblock %}
+{% block path %}{{file_data.assetPath}}{% endblock %}
 
 <!--pass info.yaml details to layout through all the pages-->
-
-{% block mode %}
-{{ post.mode }}
-{% endblock %}
-
-{% block h_img %}
-{{ info.h_img }}
-{% endblock %}
 
 {% block linkedin %}
 {{ info.linkedin }}
@@ -34,38 +25,58 @@
 
 
 {% block content %}
+
+
 <!--Post title -->
-<div id="post_heading">
-    <h1 class="display-4">{{ post.title }}</h1>
-</div>
-<!--Start Grid System-->
-<div class="row" >
-<!--left side - profile details-->
-  <div class="col-2" id="details">
-    <img src="../assets/{{ info.p_img }}" class="rounded-circle" alt="img" width="100px">
-    <h6><small>{{ info.name }}</small></h6>
-    <a href="{{ info.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="{{ info.github }}" target="_blank"><i class="fab fa-github-square"></i></a>
-    <a href="{{ info.instagram }}" target="_blank"><i class="fab fa-instagram-square"></i></a>
-    <p id="time_date">
-      {{ post.time }} read
-      <br>
-      {{ post.date }}
-    </p>
-    <p id="cat">
-      CATEGORIES
-      <br>
-      Technical
-    </p>
-    <p id="cat">
-      TAGS
-      <br>
-      {{ post.tags }}
-    </p>
-  </div>
-<!--right side - post content-->
-  <div class="col-10" id="post_content">
+<h1 id="page_title">{{ post.title }}</h1>
+
+<!-- for padding in full screen-->
+<div class="container-fluid" id="post_container">
+
+  <!--Start Grid System-->
+  <div class="row mt-5" >
+
+    <!--left side - profile details-->
+    <div class="col-2" id="details">
+      <img src="../assets/{{info.image}}" class="rounded-circle" alt="img" width="100px">
+      <h6><small>{{info.name}}</small></h6>
+      <a href="{{ info.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="{{ info.github }}" target="_blank"><i class="fab fa-github-square"></i></a>
+      <a href="{{ info.instagram }}" target="_blank"><i class="fab fa-instagram-square"></i></a>
+      <p id="time_date">
+        {{ post.time }} read
+        <br>
+        {{ post.date }}
+      </p>
+      <p id="cat">
+        CATEGORIES
+        <br>
+        Technical
+      </p>
+      <p id="cat">
+        TAGS
+        <br>
+        {{ post.tags }}
+      </p>
+    </div>
+
+    <!-- profile details for mobile display-->
+    <div id="details-mobile">
+      <p id="time_date-mobile">
+        <b>Fahim Asharaf</b>
+        <br>
+        <em>0 min read &nbsp; &middot; &nbsp; December 31, 2020 </em>
+        <br>
+        CATEGORIES &nbsp; Technical &nbsp; &nbsp; TAGS
+      </p>
+    </div>
+
+    <!--right side - post content-->
+    <div class="col-10" id="post_content">
       {{ post.content }}
+    </div>
+     
   </div>
-    {% endblock %}
-  </div>
+</div> 
+
+{% endblock %}
