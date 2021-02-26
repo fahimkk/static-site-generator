@@ -142,10 +142,6 @@ with open('_site/blog.html', 'w') as f:
 # so we have to add data manually.
 projects_metadata = []
 
-# To get the extension of the image of directories inside _project dir.
-# image name should be same as that of the directory name
-assets_dir = {os.path.splitext(path)[0]: os.path.splitext(path)[1] for path in os.listdir("assets/projects")}
-
 # PROJECT_DIR dict - is to store the markdown files
 # which are directly inside the _projects directory.
 PROJECTS_DIR = {}
@@ -153,15 +149,17 @@ PROJECTS_DIR = {}
 for project in os.listdir("_projects"):
     projects_data = {}
     # title is the directory name
-    projects_data["title"] = project.title()
     file_path = os.path.join("_projects", project)
     if os.path.isdir(file_path):
-        # if it's not dir, image name and permalink should pass
-        # within the mardown file or we can add it in default section.
-        projects_data["permalink"] = project
-        if project in assets_dir:
-            projects_data["image"] = project + assets_dir[project]
-
+        # parse the details from the info.yaml inside the each projests.
+        with open(f'{file_path}/info.yaml') as f:
+            projects_info = yaml.safe_load(f)
+            projects_data["title"] = projects_info["title"].title()
+            projects_data["image"] = projects_info["image"]
+            projects_data["permalink"] = projects_info["permalink"]
+            projects_data["language"] = projects_info["language"]
+            projects_data["abstract"] = projects_info["abstract"]
+ 
         # parse markdown files inside the directories in the _project folder
         # PROJECTS dict is to store the markdown files
         # inside the directories inside the _projects dir.
