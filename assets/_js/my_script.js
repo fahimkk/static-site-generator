@@ -93,3 +93,8 @@ $('#owl-carousel-3').owlCarousel({
     }
 });
 
+$(".codehilite").css({
+    "background-color": "#555555",
+    "color": "white"
+});
+
