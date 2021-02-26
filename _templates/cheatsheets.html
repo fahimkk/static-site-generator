@@ -26,6 +26,7 @@
 
 {% block content %}
 
+<div class="container-fluid pb-5" style="background-color:#dcdcdc;">
 
  <!--page title-->
 <h1 id="page_title">CHEATSHEETS</h1>
@@ -62,8 +63,10 @@
     <!--right side-->
     <div class="col-9" id="post_content">
       {% for heading, contents in categories.items() %}
-      <!-- 2 ids. one is for style and another is for link-->
-      <h2 class="display-7" id="blog_year {{heading}}"> {{heading}} </h2>
+      <!-- can't provide 2 ids for one div, create another div-->
+      <div id="{{heading}}">
+        <h2 class="display-7" id="blog_year"> {{heading}} </h2>
+      </div>
 
       <div class="row row-cols-1 row-cols-md-4 g-2">
         {% for content in contents %}
@@ -96,6 +99,8 @@
     </div>
 
   </div>
+
+</div>
 
 </div>
 
