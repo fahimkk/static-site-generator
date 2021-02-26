@@ -1,0 +1,86 @@
+{% extends "layout.html" %} 
+
+<!--Title for tab-->
+{% block title %}{{ file_data.pageTitle }}{% endblock %}
+<!--css files from asset folder-->
+{% block path %}{{file_data.assetPath}}{% endblock %}
+
+<!--pass info.yaml details to layout through all the pages-->
+
+{% block linkedin %}
+{{ info.linkedin }}
+{% endblock %}
+
+{% block github %}
+{{ info.github }}
+{% endblock %}
+
+{% block instagram %}
+{{ info.instagram }}
+{% endblock %}
+
+{% block footer_name %}
+{{ info.footer_name }}
+{% endblock %}
+
+
+{% block content %}
+
+ <!--page title-->
+<h1 id="page_title">{{file_data.pageTitle}}</h1>
+
+<!-- for padding in full screen-->
+<div class="container-fluid" id="cheatsheet-container">
+
+  <!-- Grid system starts -->
+  <div class="row mt-5">
+
+    <!--left side-->
+    <div class="col-3"  id="menu-table">
+
+      <table class="table table-light table-striped">
+        <thead >
+          <tr>
+            <th scope="col">
+              {{file_data.pageTitle}} 
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for heading, _ in contents.items() %}
+            <tr>
+              <td>
+                <a href="#{{heading}}" id="post_title_link"> {{heading}} </a>
+              </td>
+            </tr>
+          {% endfor %}
+        
+        </tbody>
+      </table>
+
+    </div>
+
+    <!--right side-->
+    <div class="col-9" id="post_content">
+        
+      {% for heading, content in contents.items() %}
+        <div id="{{heading}}">
+          <h2>{{heading}}</h2>
+          {{content}}  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        {% if not loop.last %}
+          <div id="back_to_top">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr id="blog_hr_line">
+        {% endif %}
+      
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+{% endblock %} 
