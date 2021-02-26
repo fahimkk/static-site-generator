@@ -26,16 +26,20 @@
 
 {% block content %}
 
+<div class="container-fluid pb-5" style="background-color: #dcdcdc;">
+
 <!--About Section-->
-<div  id="about_section">
+  <div  style="text-align: center;">
   <!-- profile image-->
-  <img src="assets/{{info.image}}" class="rounded-circle" alt="img" width="150px">
-  <h6>{{ info.name }}</h6>
+    <img src="assets/{{info.image}}" class="rounded-circle my-4" alt="img" width="150px">
+    <h6>{{ info.name }}</h6>
+  </div>
   <div class="mx-auto" style="max-width:650px; padding-top: 20px;">
     <p>
       {{content}}
     </p>
   </div>
+
 </div>
 
 {% endblock %}
