@@ -1,5 +1,0 @@
-title: Static Site Generator
-permalink: static_site_generator
-image: ssg.png
-language: Python
-abstract: Write a post (in markdown) and push it to github. Github actions will get triggered, it will this static site generator and generate the required html/css/image files etc, create a .tgz archive and then upload this to the AWS machine where it will be picked up by the nginx web server.
