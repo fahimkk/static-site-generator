@@ -71,10 +71,11 @@
 
           <!--loop.last return true if it is the last iteration-->
         {% if not loop.last %}
-          <div id="back_to_top">
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
             <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
           </div>
-          <hr id="blog_hr_line">
+          <hr style="padding-right: 10px; width: 100%;">
         {% endif %}
       
       {% endfor %}
@@ -83,4 +84,8 @@
   </div>
 
 </div>
+
+<!--no bg-color. To separate body and footer -->
+<hr>
+
 {% endblock %} 
