@@ -58,8 +58,6 @@ def createMdDict(dir_name):
             'abstract', md_file[:-3].title())
         MD[md_file].metadata.setdefault(
             'language', "")
-
-
     return MD
 
 
@@ -107,8 +105,9 @@ def sortWrtTime(DICT):
             reverse=True)
     }
     return DICT
-# TODO
-# for personal details
+
+
+# COLLECTION PERSONAL DETAILS
 favicon = False
 with open('info.yaml') as f:
     info = yaml.safe_load(f)
@@ -249,19 +248,14 @@ index_html = index_template.render(posts=posts_metadata, info=info,
 # variable posts to our index.html page template
 save("_site/index.html", index_html)
 
-
+# COPTYING ASSETS
 # If the assets dir is not present create one and
-# put all the css files and images inside the asset dir
-# copy to the _site
+# copy all the files to the _site directory.
 os.makedirs('assets', exist_ok=True)
 cp_cmd = "cp -r assets _site"
 # copy favicon.ico to _site folder directly
+# Check whether a favicon.ico is added in assets folder or not
+# by checking true/false in info.yaml file
 if favicon:
     cp_cmd += "; cp -r assets/favicon.ico _site"
 os.popen(cp_cmd)
-
-# Check whether a favicon.ico is added in assets folder or not
-# by checking true/false in info.yaml file
-
-
-# ============================================================
