@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheatSheet</title>
+
+    <link rel="stylesheet" href="./assets/_css/style_lite.css">
+    <!-- For slider under resent section-->
+    <link rel="stylesheet" href="./assets/_css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/_css/owl.carousel.min.css">
+    <!--for carousel icon theme-->
+    <link rel="stylesheet" href="./assets/_css/owl.theme.default.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="menu_text">
+        Menu
+      <span class="navbar-toggler-icon" id="menu_icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!--mx auto to align it center-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./about.html">About</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./blog.html">Blog</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./projects.html">Projects</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./cheatsheets.html">CheatSheets</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+    
+
+<div class="container-fluid pb-5" style="background-color:#dcdcdc;">
+
+ <!--page title-->
+<h1 id="page_title">CHEATSHEETS</h1>
+  <!--for padding in full screen-->
+<div class="container-fluid" id="cheatsheet-container">
+
+  <!-- Grid system starts -->
+  <div class="row mt-5">
+
+    <!--left side-->
+    <div class="col-3"  id="menu-table">
+
+      <table class="table table-light table-striped">
+        <thead >
+          <tr>
+            <th scope="col">
+              CHEATSHEET
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td>
+                <a href="#Database" id="post_title_link">Database</a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Language" id="post_title_link">Language</a>
+              </td>
+            </tr>
+          
+        </tbody>
+      </table>
+
+    </div>
+
+    <!--right side-->
+    <div class="col-9" id="post_content">
+      
+      <!-- can't provide 2 ids for one div, create another div-->
+      <div id="Database">
+        <h2 class="display-7" id="blog_year"> Database </h2>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-2">
+        
+          <!--bg of card is same as the bg of page-->
+          <div class="col me-5 mb-3 shadow">
+            <!--div for - image and title link-->
+            <div id="post_img_link">
+              <div class="card">
+                <a href="cheatsheets/mySql.html">
+                  <img src="assets/cheatsheets/mysql.jpeg" class="card-img-top" alt="MySQL">
+                </a>
+              </div>
+              <h4 id="post_title">
+                <a href="cheatsheets/mySql.html" id="post_title_link">MySQL</a>
+              </h4>
+            </div>
+          </div>
+        
+          <!--bg of card is same as the bg of page-->
+          <div class="col me-5 mb-3 shadow">
+            <!--div for - image and title link-->
+            <div id="post_img_link">
+              <div class="card">
+                <a href="cheatsheets/postgreSql.html">
+                  <img src="assets/cheatsheets/postgrefeat.jpg" class="card-img-top" alt="PostgreSQL">
+                </a>
+              </div>
+              <h4 id="post_title">
+                <a href="cheatsheets/postgreSql.html" id="post_title_link">PostgreSQL</a>
+              </h4>
+            </div>
+          </div>
+        
+      </div>
+
+      <!-- loop.last return true if it is the last iteration -->
+        
+          <div id="back_to_top">
+            <a  href="#page_title"> BACK TO TOP &UpArrow;</a>
+          </div>
+          <hr id="blog_hr_line">
+        
+
+      
+      <!-- can't provide 2 ids for one div, create another div-->
+      <div id="Language">
+        <h2 class="display-7" id="blog_year"> Language </h2>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-2">
+        
+          <!--bg of card is same as the bg of page-->
+          <div class="col me-5 mb-3 shadow">
+            <!--div for - image and title link-->
+            <div id="post_img_link">
+              <div class="card">
+                <a href="cheatsheets/python.html">
+                  <img src="assets/cheatsheets/python.jpeg" class="card-img-top" alt="Python">
+                </a>
+              </div>
+              <h4 id="post_title">
+                <a href="cheatsheets/python.html" id="post_title_link">Python</a>
+              </h4>
+            </div>
+          </div>
+        
+          <!--bg of card is same as the bg of page-->
+          <div class="col me-5 mb-3 shadow">
+            <!--div for - image and title link-->
+            <div id="post_img_link">
+              <div class="card">
+                <a href="cheatsheets/bash.html">
+                  <img src="assets/cheatsheets/bash.png" class="card-img-top" alt="Bash">
+                </a>
+              </div>
+              <h4 id="post_title">
+                <a href="cheatsheets/bash.html" id="post_title_link">Bash</a>
+              </h4>
+            </div>
+          </div>
+        
+      </div>
+
+      <!-- loop.last return true if it is the last iteration -->
+        
+
+      
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+
+  <!-- SCRIPTS - For owl cursor action-->
+  <!--script for social media icon-->
+  <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
+  <script scr="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/um/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src=" ./assets/_js/bootstrap.min.js"></script>
+  <script src=" ./assets/_js/owl.carousel.min.js"></script>
+  <script src=" ./assets/_js/my_script.js"></script>
+
+<!--footer-->
+<footer id="main_footer">
+  <a href="
+https://www.linkedin.com/in/fahim-asharaf-b10433a2/
+" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="
+https://github.com/fahimkk
+" target="_blank"><i class="fab fa-github-square"></i></a>
+  <a href="
+https://www.instagram.com/fahimasharaf/
+" target="_blank"><i class="fab fa-instagram-square"></i></a>
+  <p> &copy; 2021 
+Fahim KK
+ </p>
+</footer>
+
+</body>
+</html>

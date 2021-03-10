@@ -3,7 +3,7 @@ layout: post
 title: Hosting on Github Pages
 permalink: hosting-on-github-pages
 image: hosting.png
-date: December 31, 2020
+date: December 31, 2021
 ---
 
 Github pages is a service that github offers, and it basically allows you to serve and host a static website completely free.

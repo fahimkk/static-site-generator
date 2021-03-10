@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postgresql</title>
+
+    <link rel="stylesheet" href="../assets/_css/style_lite.css">
+    <!-- For slider under resent section-->
+    <link rel="stylesheet" href="../assets/_css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/_css/owl.carousel.min.css">
+    <!--for carousel icon theme-->
+    <link rel="stylesheet" href="../assets/_css/owl.theme.default.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="menu_text">
+        Menu
+      <span class="navbar-toggler-icon" id="menu_icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!--mx auto to align it center-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../about.html">About</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../blog.html">Blog</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../projects.html">Projects</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../cheatsheets.html">CheatSheets</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+    
+
+ <!--page title-->
+<h1 id="page_title">Postgresql</h1>
+
+<!-- for padding in full screen-->
+<div class="container-fluid" id="cheatsheet-container">
+
+  <!-- Grid system starts -->
+  <div class="row mt-5">
+
+    <!--left side-->
+    <div class="col-3"  id="menu-table">
+
+      <table class="table table-light table-striped">
+        <thead >
+          <tr>
+            <th scope="col">
+              Postgresql 
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td>
+                <a href="#Introduction" id="post_title_link"> Introduction </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Install Postgresql On Ubuntu 20.04" id="post_title_link"> Install Postgresql On Ubuntu 20.04 </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Postgresql Roles" id="post_title_link"> Postgresql Roles </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Creating A New Role" id="post_title_link"> Creating A New Role </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Creating A New Database" id="post_title_link"> Creating A New Database </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Login With New User" id="post_title_link"> Login With New User </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Creating Tables" id="post_title_link"> Creating Tables </a>
+              </td>
+            </tr>
+          
+        
+        </tbody>
+      </table>
+
+    </div>
+
+    <!--right side-->
+    <div class="col-9" id="post_content">
+        
+      
+        <div id="Introduction">
+          <h2>Introduction</h2>
+          
+<p>PostgreSQL is a relational database management system that provides an implementation of the sql querying language.
+It's a popular choice for many small and large projects,
+and it has the advantages of being standards compliant and having many advanced features like reliable transactions and concurrency without read blocks.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Install Postgresql On Ubuntu 20.04">
+          <h2>Install Postgresql On Ubuntu 20.04</h2>
+          
+<p>Use the terminal to install PostgreSQL</p>
+
+<p>If you’ve not done so recently, refresh your server’s local package index</p>
+
+<div class="codehilite"><pre><span></span><code>sudo apt update
+</code></pre></div>
+
+<p>Then, install the postgresql package along with a <code>-contrib</code> package that adds some additional utilities and functionality</p>
+
+<div class="codehilite"><pre><span></span><code>sudo apt install postgresql postgresql-contrib
+</code></pre></div>
+
+<p>Now you have installed postgresql on your machine.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Postgresql Roles">
+          <h2>Postgresql Roles</h2>
+          
+<p>Database access permissions within PostgreSQL are handled with the concept of roles. A role can represent a database user or a group of database users.</p>
+
+<p>The installation procedure created an user account called "postgres" that is associated with the default postgres role, and a database with the same name ("postgres").
+This user is the superuser for the PostgreSQL instance, and it is equivalent to the MySQL root user.
+In order to use "postgres" you have to login to that account.</p>
+
+<p>There are two way to login to you PostgreSQL account.</p>
+
+<p>The first one is to switch over to the postgres account on your terminal by typing</p>
+
+<div class="codehilite"><pre><span></span><code>sudo -i -u postgres
+</code></pre></div>
+
+<p>You can now access the PostgreSQL prompt immediately by typing</p>
+
+<div class="codehilite"><pre><span></span><code>psql
+</code></pre></div>
+
+<p>From there you are free to interact with the database management system.</p>
+
+<p>To know the details about the connection you can use <code>\conninfo</code> inside the PostgreSQL prompt.</p>
+
+<p>Exit out of the PostgreSQL prompt by typing <code>\q</code> .</p>
+
+<p>Another method to login is by running the command you’d like with the postgres account directly with <code>sudo</code>.
+That means in the last method we were get to the Postgres prompt by first switching to the postgres user and then running <code>psql</code> to open the Postgres prompt.
+You could do this in one step by running the single command <code>psql</code> as the postgres user with <code>sudo</code></p>
+
+<div class="codehilite"><pre><span></span><code>sudo -u postgres psql
+</code></pre></div>
+
+<p>This will log you directly into Postgres without the intermediary <code>bash</code> shell in between.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Creating A New Role">
+          <h2>Creating A New Role</h2>
+          
+<p>You can create new roles from the command line with the <code>createuser</code> command.
+The <code>--interactive</code> flag will prompt you for the name of the new role and also ask whether it should have superuser permissions.</p>
+
+<p>If you are logged in as the Postgres account, you can create a new user by typing</p>
+
+<div class="codehilite"><pre><span></span><code>createuser --interactive
+</code></pre></div>
+
+<p>if you prefer to use <code>sudo</code>, without switching from your normal account,</p>
+
+<div class="codehilite"><pre><span></span><code>sudo -u postgres createuser --interactive
+</code></pre></div>
+
+<p>This will ask your name role and give choice to be a super user.</p>
+
+<p>Inside the psql shell you can give the DB user postgres a password:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">ALTER</span> <span class="k">USER</span> <span class="n">postgres</span> <span class="n">PASSWORD</span> <span class="s1">&#39;newPassword&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>You can access more about additional flags of a command from <code>man</code> page. For example,</p>
+
+<div class="codehilite"><pre><span></span><code>man createuser
+</code></pre></div>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Creating A New Database">
+          <h2>Creating A New Database</h2>
+          
+<p>If you created a user with username user<em>1, that role will attempt to connect to a database which is also called “user</em>1” by default.
+You can create the appropriate database with the <code>createdb</code> command.</p>
+
+<p>PostgreSQL flexibility provides multiple paths for creating databases as needed.</p>
+
+<p>If you are logged in as the postgres account,</p>
+
+<div class="codehilite"><pre><span></span><code>createdb database_name
+</code></pre></div>
+
+<p>If you are in your linux terminal</p>
+
+<div class="codehilite"><pre><span></span><code>sudo -u postgres createdb database_name
+</code></pre></div>
+
+<p>instead of postgres you can also use role name (username) who has create database privilege</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Login With New User">
+          <h2>Login With New User</h2>
+          
+<p>To log in with <code>ident</code> based authentication, you’ll need a Linux user with the same name as your Postgres role and database.</p>
+
+<p>If you don’t have a matching Linux user available, you can create one with the <code>adduser</code> command.</p>
+
+<div class="codehilite"><pre><span></span><code>sudo adduser linux_username
+</code></pre></div>
+
+<p>After creating a role, you can login with that username instead of "postgres"</p>
+
+<div class="codehilite"><pre><span></span><code>sudo -u username psql
+</code></pre></div>
+
+<p>If you want your user to connect to a different database, you can do so by specifying the database like this</p>
+
+<div class="codehilite"><pre><span></span><code>psql -d postgres
+</code></pre></div>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Creating Tables">
+          <h2>Creating Tables</h2>
+          
+<p>The basic syntax for creating tables is as follows:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="p">(</span>
+    <span class="n">column_name1</span> <span class="n">col_type</span> <span class="p">(</span><span class="n">field_length</span><span class="p">)</span> <span class="n">column_constraints</span><span class="p">,</span>
+    <span class="n">column_name2</span> <span class="n">col_type</span> <span class="p">(</span><span class="n">field_length</span><span class="p">),</span>
+    <span class="n">column_name3</span> <span class="n">col_type</span> <span class="p">(</span><span class="n">field_length</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p>Some data types like id, date, etc. don’t require a set length because the length or format is implied.</p>
+
+<p>For id we use <code>serial</code> as type, which is an auto-incrementing integer.
+This column also has the constraint of <code>PRIMARY KEY</code> which means that the values within it must be unique and not null.</p>
+
+<p>To see new table</p>
+
+<div class="codehilite"><pre><span></span><code><span class="err">\</span><span class="n">d</span>
+</code></pre></div>
+
+<p>If you want to see just the table without the sequence,</p>
+
+<div class="codehilite"><pre><span></span><code><span class="err">\</span><span class="n">dt</span>
+</code></pre></div>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+      
+      
+    </div>
+
+  </div>
+
+</div>
+
+<!--no bg-color. To separate body and footer -->
+<hr>
+
+
+
+  <!-- SCRIPTS - For owl cursor action-->
+  <!--script for social media icon-->
+  <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
+  <script scr="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/um/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src=" ../assets/_js/bootstrap.min.js"></script>
+  <script src=" ../assets/_js/owl.carousel.min.js"></script>
+  <script src=" ../assets/_js/my_script.js"></script>
+
+<!--footer-->
+<footer id="main_footer">
+  <a href="
+https://www.linkedin.com/in/fahim-asharaf-b10433a2/
+" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="
+https://github.com/fahimkk
+" target="_blank"><i class="fab fa-github-square"></i></a>
+  <a href="
+https://www.instagram.com/fahimasharaf/
+" target="_blank"><i class="fab fa-instagram-square"></i></a>
+  <p> &copy; 2021 
+Fahim KK
+ </p>
+</footer>
+
+</body>
+</html>

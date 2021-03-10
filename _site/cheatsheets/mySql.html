@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysql</title>
+
+    <link rel="stylesheet" href="../assets/_css/style_lite.css">
+    <!-- For slider under resent section-->
+    <link rel="stylesheet" href="../assets/_css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/_css/owl.carousel.min.css">
+    <!--for carousel icon theme-->
+    <link rel="stylesheet" href="../assets/_css/owl.theme.default.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="menu_text">
+        Menu
+      <span class="navbar-toggler-icon" id="menu_icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!--mx auto to align it center-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../about.html">About</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../blog.html">Blog</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../projects.html">Projects</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="../cheatsheets.html">CheatSheets</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+    
+
+ <!--page title-->
+<h1 id="page_title">Mysql</h1>
+
+<!-- for padding in full screen-->
+<div class="container-fluid" id="cheatsheet-container">
+
+  <!-- Grid system starts -->
+  <div class="row mt-5">
+
+    <!--left side-->
+    <div class="col-3"  id="menu-table">
+
+      <table class="table table-light table-striped">
+        <thead >
+          <tr>
+            <th scope="col">
+              Mysql 
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td>
+                <a href="#Introduction" id="post_title_link"> Introduction </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Relational Database" id="post_title_link"> Relational Database </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Common Data Types" id="post_title_link"> Common Data Types </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Installation And Environment" id="post_title_link"> Installation And Environment </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Install On Ubuntu Using Terminal" id="post_title_link"> Install On Ubuntu Using Terminal </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Configure Mysql" id="post_title_link"> Configure Mysql </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Get Starts With Mysql" id="post_title_link"> Get Starts With Mysql </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Create A New User" id="post_title_link"> Create A New User </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Create A Database" id="post_title_link"> Create A Database </a>
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                <a href="#Creating Tables" id="post_title_link"> Creating Tables </a>
+              </td>
+            </tr>
+          
+        
+        </tbody>
+      </table>
+
+    </div>
+
+    <!--right side-->
+    <div class="col-9" id="post_content">
+        
+      
+        <div id="Introduction">
+          <h2>Introduction</h2>
+          
+<p>This post only shows you how to install mysql on ubuntu by using terminal and setup very basic credentials of it to get started for learning purpose.</p>
+
+<p>Before jump in let's talk a little bit about what MySQL is,
+it's very popular open source relational database management system (DBMS).
+There is different types of databases or DBMS, like relational, NoSQL, distributed, or graph databases,
+but the relational databases are very popular within web development.
+Some other examples for relational databases are postgre, Microsoft SQL Server, or Oracle databases.</p>
+
+<p>One thing that all relational databases have common is that they all use SQL which is structured query language,
+and SQL for the most part is just that it's a query language to do things like select data, insert, sort all that stuffs and it's very similar across all relational databases (it's not identical, there are some quirks in the syntax depending on which relational database you're using but a lot of it is the same).</p>
+
+<p>MySQL is a leading database for web applications and it's used in small business websites all the way to very large scale enterprise applications, so you can use it for just about anything, and it's used with multiple languages pretty much any programming language, but very popular with the languages that are used highly in web development like PHP, nodejs (JavaScript), Python, C#, etc.
+And it's completely cross-platform so you can installed on Linux, Windows or Mac.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Relational Database">
+          <h2>Relational Database</h2>
+          
+<p>A relational database (RDBMS) is based on the relational model of data, like I said majority of the databases use SQL to manage them.
+RDBMS uses <code>tables</code> to store your data and this tables have <code>columns</code> and <code>rows</code> similar to what you'd see in like an Excel spreadsheet.
+Tables and fields can relate to each other through <code>keys</code>.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Common Data Types">
+          <h2>Common Data Types</h2>
+          
+<ul>
+<li>Numeric &nbsp; &nbsp; &nbsp;INT, TINYINT, BIGINT, FLOAT</li>
+<li>String &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; VARCHAR, TEXT, CHAR</li>
+<li>Dates &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DATE, DATETIME, TIMESTAMP</li>
+<li>Other &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BINARY, JSON</li>
+</ul>
+
+<p>TINYINT normally used for bool values, <code>0 for false and 1 for true</code></p>
+
+<p>VARCHAR is normally for small texts (below 255), and for larger text we use TEXT (max of 65,000 characters).</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Installation And Environment">
+          <h2>Installation And Environment</h2>
+          
+<p>Locally you can install standalone server of MySQL this is what I'll be showing in this post,
+but you can also install software suites like XAMPP, MAMP, WAMP/LAMP which they come with an Apache web server, PHP which is a programming language, MySQL and some other stuff as well, Usually they used for local development.</p>
+
+<p>If you are using a solution like digitalocean or aws like cloud hosting,
+they pretty much give you a terminal or a Linux container and you can access it through a terminal in that case you would install MySQL using whatever package manager that Linux distribution uses.</p>
+
+<p>As far as managing your server or managing your databases there's different ways to do this, so with MySQL you get a shell program that you login through your <code>terminal or command line</code>, you have desktop tools such as <code>MySQL workbench</code> and you also have web-based tools like <code>PHPMyAdmin</code> if you are installed XAMPP, WAMP/LAMP or MAMP.
+In PHPMyAdmin you can log in to the program through your browser and you can actually manage your database from there in a graphical interface.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Install On Ubuntu Using Terminal">
+          <h2>Install On Ubuntu Using Terminal</h2>
+          
+<div class="codehilite"><pre><span></span><code>sudo apt update
+sudo apt install mysql-server
+</code></pre></div>
+
+<p>The first command is to update the system softwares, and second is to install mysql.</p>
+
+<p>To check the version</p>
+
+<div class="codehilite"><pre><span></span><code>mysql --version
+</code></pre></div>
+
+<p>which will give you the version of my sql installed on your ubuntu system.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Configure Mysql">
+          <h2>Configure Mysql</h2>
+          
+<p>If you wanna go with the root password you can also go,
+but if you wanna to set your password yourself you could also do that.</p>
+
+<p>To configure your mysql</p>
+
+<div class="codehilite"><pre><span></span><code>sudo mysql_secure_installation
+</code></pre></div>
+
+<p>The first step after running the above code is password validation.
+The prompt will ask your permission to setup VALIDATE PASSWORD component. Press y for yes.
+It would say that there are three levels of password validation policy, so choose the one you want.
+And after that type your password which matches the level you have chosen.
+Then the prompt shows the estimated strength of your password,
+so you can decide whether you want to continue with this password or not.
+(if you press no then it will allow you to rewrite your password)</p>
+
+<p>After the password setup, the prompt will ask you about Removing anonymous users. Choose yes/no.</p>
+
+<p>Then it will as your permission for Disallow root login remotely.</p>
+
+<p>After that it will ask your permission to Remove test database and access to it.</p>
+
+<p>And finally it will ask your permission to Reload privilege tables now.</p>
+
+<p>You can change these credentials in future with the same above command.
+So you can see that it's all done now.
+So we have installed Mysql and now we have also changed the password and we have done the settings that we waned to.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Get Starts With Mysql">
+          <h2>Get Starts With Mysql</h2>
+          
+<p>To go to mysql console or to login</p>
+
+<div class="codehilite"><pre><span></span><code>sudo mysql -u root
+
+or
+
+mysql -u root -p
+</code></pre></div>
+
+<p>The second command is for if you enabled password authentication for root,(we discussed in the last session) here -p is for password, it will ask for your password, so you can put your root users password or if you created an user account then you can put user name instead of root and give its password</p>
+
+<p>After creating an user account instead of using root in above commands you can use the username to login as the user.</p>
+
+<p>Now you will enter into the mysql console (interface).</p>
+
+<p>Use this username and password to connect in mysql-workbench.</p>
+
+<ul>
+<li>Database -> connect to database - change the root with your username and enter the password after clicking ok button.</li>
+</ul>
+
+<p>You can clear the terminal with <code>Ctrl l</code></p>
+
+<p>To exit from mysql interface you can use <code>quit</code> command.</p>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Create A New User">
+          <h2>Create A New User</h2>
+          
+<p>Once you have access to the MySQL prompt, you can create a new user with a CREATE USER statement. These follow this general syntax:</p>
+
+<div class="codehilite"><pre><span></span><code>CREATE USER <span class="s1">&#39;username&#39;</span>@<span class="s1">&#39;host&#39;</span> IDENTIFIED BY <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>After <code>CREATE USER</code>, you specify a username.
+This is immediately followed by an @ sign and then the hostname from which this user will connect.
+If you only plan to access this user locally from your Ubuntu server, you can specify <code>localhost</code>.
+Wrapping both the username and host in single quotes isn’t always necessary, but doing so can help to prevent errors.</p>
+
+<p>To list all the users that you have</p>
+
+<div class="codehilite"><pre><span></span><code>SELECT user, host FROM mysql.user<span class="p">;</span>
+</code></pre></div>
+
+<p>Right now the user we have created can't do anything, we have to give this user some privileges.
+To make this user as an admin so that he can create new databases, update data in other databases etc, so full access and you.</p>
+
+<div class="codehilite"><pre><span></span><code>GRANT ALL PRIVILEGES ON * . * TO <span class="s1">&#39;username&#39;</span>@<span class="s1">&#39;host&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>You can also grant limited privileges, here is an example for that</p>
+
+<div class="codehilite"><pre><span></span><code>GRANT CREATE, DROP, INSERT, UPDATE, DELETE, SELECT, ON * . * TO <span class="s1">&#39;username&#39;</span>@<span class="s1">&#39;host&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>In both the examples we use asterisks(*) which grants user privileges globally in place of databases and table names.
+In SQL, asterisks are special characters used to represent "all" databases or tables.</p>
+
+<p>Following this, it’s good practice to run the FLUSH PRIVILEGES command. This will free up any memory that the server cached as a result of the preceding CREATE USER and GRANT statements:</p>
+
+<div class="codehilite"><pre><span></span><code>FLUSH PRIVILEGES<span class="p">;</span>
+</code></pre></div>
+
+<p>To check the privileges for a certain user</p>
+
+<div class="codehilite"><pre><span></span><code>SHOW GRANTS FOR <span class="s1">&#39;username&#39;</span>@<span class="s1">&#39;host&#39;</span><span class="p">;</span>
+</code></pre></div>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Create A Database">
+          <h2>Create A Database</h2>
+          
+<p>To see the databases you have</p>
+
+<div class="codehilite"><pre><span></span><code>SHOW DATABASES<span class="p">;</span>
+</code></pre></div>
+
+<p>To create a new database</p>
+
+<div class="codehilite"><pre><span></span><code>CREATE DATABASE database_name<span class="p">;</span>
+</code></pre></div>
+
+<p>if you don't put semicolon it will go on to the next line, because you can do multi-line statements.</p>
+
+<p>To check whether the database creation is successful or not,
+type <code>SHOW DATABASES;</code> command again to list all your databases.</p>
+
+<p>To use that database we actually have to specify <code>USE</code> and then the database name</p>
+
+<div class="codehilite"><pre><span></span><code>USE database_name
+</code></pre></div>
+
+<p>To remove a table</p>
+
+<div class="codehilite"><pre><span></span><code>DROP DATABASE database_name<span class="p">;</span>
+</code></pre></div>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+        <!-- this id is adjusted for other container width.-->
+          <div id="back_to_top" style="padding-right: 0px;">
+            <a  href="#page_title"> BACK TO TOP &UpArrow; </a>
+          </div>
+          <hr style="padding-right: 10px; width: 100%;">
+        
+      
+      
+        <div id="Creating Tables">
+          <h2>Creating Tables</h2>
+          
+<p>To create a table</p>
+
+<div class="codehilite"><pre><span></span><code>CREATE TABLE table_name<span class="o">(</span>
+    id INT AUTO_INCREMENT,
+    first_name VARCHAR<span class="o">(</span><span class="m">100</span><span class="o">)</span>,
+    last_name VARCHAR<span class="o">(</span><span class="m">100</span><span class="o">)</span>,
+    email VARCHAR<span class="o">(</span><span class="m">75</span><span class="o">)</span>,
+    password VARCHAR<span class="o">(</span><span class="m">255</span><span class="o">)</span>,
+    location VARCHAR<span class="o">(</span><span class="m">100</span><span class="o">)</span>,
+    dept VARCHAR<span class="o">(</span><span class="m">75</span><span class="o">)</span>,
+    is_admin TINYINT<span class="o">(</span><span class="m">1</span><span class="o">)</span>,
+    register_date DATETIME,
+    PRIMARY KEY<span class="o">(</span>id<span class="o">)</span>
+<span class="o">)</span><span class="p">;</span>
+</code></pre></div>
+
+<p>To see the tables inside the selected database</p>
+
+<div class="codehilite"><pre><span></span><code>SHOW TABLES<span class="p">;</span>
+</code></pre></div>
+
+<p>To remove a table</p>
+
+<div class="codehilite"><pre><span></span><code>DROP TABLE table_name<span class="p">;</span>
+</code></pre></div>
+  
+        </div>
+
+          <!--loop.last return true if it is the last iteration-->
+        
+      
+      
+    </div>
+
+  </div>
+
+</div>
+
+<!--no bg-color. To separate body and footer -->
+<hr>
+
+
+
+  <!-- SCRIPTS - For owl cursor action-->
+  <!--script for social media icon-->
+  <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
+  <script scr="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/um/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src=" ../assets/_js/bootstrap.min.js"></script>
+  <script src=" ../assets/_js/owl.carousel.min.js"></script>
+  <script src=" ../assets/_js/my_script.js"></script>
+
+<!--footer-->
+<footer id="main_footer">
+  <a href="
+https://www.linkedin.com/in/fahim-asharaf-b10433a2/
+" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="
+https://github.com/fahimkk
+" target="_blank"><i class="fab fa-github-square"></i></a>
+  <a href="
+https://www.instagram.com/fahimasharaf/
+" target="_blank"><i class="fab fa-instagram-square"></i></a>
+  <p> &copy; 2021 
+Fahim KK
+ </p>
+</footer>
+
+</body>
+</html>

@@ -1,81 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahim</title>
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="./assets/_css/style_lite.css">
+    <!-- For slider under resent section-->
+    <link rel="stylesheet" href="./assets/_css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/_css/owl.carousel.min.css">
+    <!--for carousel icon theme-->
+    <link rel="stylesheet" href="./assets/_css/owl.theme.default.min.css">
+
 </head>
+
 <body>
-    <div class="container" style="padding-left:70px; padding-right: 70px;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary mx-auto" style="margin-bottom: 50px; border-radius: 5px;">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About</a>
-                    </li>
-                </ul>
-          </div>
-        </div>
-    </nav>
-    <div class="container card" style="width: 10rem;">
-        <img src="assets/fahim.jpg"class="card-img-top" alt="...">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="menu_text">
+        Menu
+      <span class="navbar-toggler-icon" id="menu_icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!--mx auto to align it center-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./about.html">About</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./blog.html">Blog</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./projects.html">Projects</a>
+        </li>
+        <li class="nav-item  active">
+          <a class="nav-link" aria-current="page" href="./cheatsheets.html">CheatSheets</a>
+        </li>
+      </ul>
+
     </div>
+  </div>
+</nav>
 
 
     
-<div>   
-    <p style="margin-top: 10px;margin-bottom: 30px; text-align: center; font-style: italic; color: #555555;">Fahim</p>
 
-
-    <div class="row row-cols-1 row-cols-md-4 g-4" style="margin-top: 20px;">
-        
-        <div class="col">
-          <div class="card" style="margin: 30px;">
-            <img src="assets/tutorial.png" class="card-img-top" alt="">
-            <div class="card-body">
-              <h5 class="card-title">
-                  <a href="posts/jekyll-tutorial.html">Jekyll Tutorial</a>
-              </h5>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col">
-          <div class="card" style="margin: 30px;">
-            <img src="assets/install.png" class="card-img-top" alt="">
-            <div class="card-body">
-              <h5 class="card-title">
-                  <a href="posts/install-jekyll-on-ubuntu.html">Install Jekyll on Ubuntu</a>
-              </h5>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col">
-          <div class="card" style="margin: 30px;">
-            <img src="assets/hosting.png" class="card-img-top" alt="">
-            <div class="card-body">
-              <h5 class="card-title">
-                  <a href="posts/hosting-on-github-pages.html">Hosting on Github Pages</a>
-              </h5>
-            </div>
-          </div>
-        </div>
-        
-      </div>
+<!--About Section-->
+<div  id="about_section">
+  <!-- profile image-->
+  <img src="assets/fahim.jpg" class="rounded-circle" alt="img" width="150px">
+  <h6>Fahim Asharaf</h6>
+  <!--w-50 to make it center-->
+  <div class="w-50 mx-auto" style="max-width:450px">
+    <p>
+      <p>Mechanical Engineer by profession, But highly passionate and curious about the IT industries.</p>
+    </p>
+  </div>
+  <button type="button" class="btn btn-outline-secondary">
+    <a href="about.html" id="post_title_link">
+      Read More
+    </a>
+  </button>
 </div>
+
+<!--Resent Blogs-->
+<div style="background-color:#DFCFBA;">
+  <div class="container" style="padding: 60px;" >
+    <h1 id="section_title">RESENT BLOG</h1>
+
+      <div class="owl-carousel mt-5 owl-theme" id="owl-carousel-1">
+
+        
+        <div class="col" id="title_card">
+          <div class="shadow p-1" style="background-color: #ddd;">
+            <div class="card" style="background-color:#DCDCDC ;">
+              <img src="assets/blog/hosting.png" alt="Hosting on Github Pages" class="card-img-top">
+            </div>
+          </div>
+          <h5 >
+            <a href="posts/hosting-on-github-pages.html" id="post_title_link">
+              Hosting on Github Pages
+            </a>
+          </h5>
+        </div>
  
+        
+        <div class="col" id="title_card">
+          <div class="shadow p-1" style="background-color: #ddd;">
+            <div class="card" style="background-color:#DCDCDC ;">
+              <img src="assets/blog/tutorial.png" alt="Jekyll Tutorial" class="card-img-top">
+            </div>
+          </div>
+          <h5 >
+            <a href="posts/jekyll-tutorial.html" id="post_title_link">
+              Jekyll Tutorial
+            </a>
+          </h5>
+        </div>
+ 
+        
+        <div class="col" id="title_card">
+          <div class="shadow p-1" style="background-color: #ddd;">
+            <div class="card" style="background-color:#DCDCDC ;">
+              <img src="assets/blog/install.png" alt="Install Jekyll on Ubuntu title long" class="card-img-top">
+            </div>
+          </div>
+          <h5 >
+            <a href="posts/install-jekyll-on-ubuntu.html" id="post_title_link">
+              Install Jekyll on Ubuntu title long
+            </a>
+          </h5>
+        </div>
+ 
+        
+
+      </div>
     </div>
+  </div>
+
+
+<!-- Projects -->
+<div style="background-color:#b19898;">
+  <div class="container" style="padding: 70px;" >
+    <h1 id="section_title">PROJECTS</h1>
+
+    <div class="owl-carousel mt-5 owl-theme" id="owl-carousel-2">
+
+      
+        <div class="card mb-3 mx-auto" style="max-width: 540px; background-color: #a88989;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="assets/projects/ssg.png" alt="Static Site Generator" class="card-img-top" width="100%" height="100%">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="projects/static-site-generator.html" id="post_title_link">
+                    Static Site Generator
+                  </a>
+                </h5>
+  <!--TODO - Project details, ie project directory related-->
+                <p class="card-text">
+                  Write a post (in markdown) and push it to github. Github actions will get triggered, it will this static site generator and generate the required html/css/image files etc, create a .tgz archive and then upload this to the AWS machine where it will be picked up by the nginx web server.
+                  <small class="text-muted">
+                    Python
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="card mb-3 mx-auto" style="max-width: 540px; background-color: #a88989;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="assets/projects/todolist.jpeg" alt="ToDo List App" class="card-img-top" width="100%" height="100%">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="projects/todo-list-app.html" id="post_title_link">
+                    ToDo List App
+                  </a>
+                </h5>
+  <!--TODO - Project details, ie project directory related-->
+                <p class="card-text">
+                  A simple To Do List web app.
+                  <small class="text-muted">
+                    Golang
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        
+    </div>
+  </div>
+</div>
+
+
+
+<!--CheatSheet-->
+<div style="background-color:#DCDCDC;">
+<div class="container" style="padding: 60px;" >
+  <h1 id="section_title">CHEATSHEETS</h1>
+
+  <div class="owl-carousel mt-5 owl-theme" id="owl-carousel-3">
+
+    
+    <div class="col" id="title_card">
+      <div class="item shadow p-0 bg-#dcdcdc rounded" style="background-color: #ddd;">
+        <div class="card" style="background-color:#DCDCDC ;">
+  <!--TODO - add post.project in path for both img and h5-->
+          <img data-src="assets/cheatsheets/mysql.jpeg" class="card-img-top owl-lazy">
+        </div>
+      </div>
+        <h5 class=" card-title text-center">
+          <a href="cheatsheets/mySql.html" id="post_title_link">
+            MySQL
+          </a>
+        </h5>
+    </div>
+    
+    <div class="col" id="title_card">
+      <div class="item shadow p-0 bg-#dcdcdc rounded" style="background-color: #ddd;">
+        <div class="card" style="background-color:#DCDCDC ;">
+  <!--TODO - add post.project in path for both img and h5-->
+          <img data-src="assets/cheatsheets/python.jpeg" class="card-img-top owl-lazy">
+        </div>
+      </div>
+        <h5 class=" card-title text-center">
+          <a href="cheatsheets/python.html" id="post_title_link">
+            Python
+          </a>
+        </h5>
+    </div>
+    
+    <div class="col" id="title_card">
+      <div class="item shadow p-0 bg-#dcdcdc rounded" style="background-color: #ddd;">
+        <div class="card" style="background-color:#DCDCDC ;">
+  <!--TODO - add post.project in path for both img and h5-->
+          <img data-src="assets/cheatsheets/bash.png" class="card-img-top owl-lazy">
+        </div>
+      </div>
+        <h5 class=" card-title text-center">
+          <a href="cheatsheets/bash.html" id="post_title_link">
+            Bash
+          </a>
+        </h5>
+    </div>
+    
+    <div class="col" id="title_card">
+      <div class="item shadow p-0 bg-#dcdcdc rounded" style="background-color: #ddd;">
+        <div class="card" style="background-color:#DCDCDC ;">
+  <!--TODO - add post.project in path for both img and h5-->
+          <img data-src="assets/cheatsheets/postgrefeat.jpg" class="card-img-top owl-lazy">
+        </div>
+      </div>
+        <h5 class=" card-title text-center">
+          <a href="cheatsheets/postgreSql.html" id="post_title_link">
+            PostgreSQL
+          </a>
+        </h5>
+    </div>
+    
+
+  </div>
+</div>
+</div>
+
+
+
+  <!-- SCRIPTS - For owl cursor action-->
+  <!--script for social media icon-->
+  <script src="https://kit.fontawesome.com/e1342e9a0c.js" crossorigin="anonymous"></script>
+  <script scr="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/um/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src=" ./assets/_js/bootstrap.min.js"></script>
+  <script src=" ./assets/_js/owl.carousel.min.js"></script>
+  <script src=" ./assets/_js/my_script.js"></script>
+
+<!--footer-->
+<footer id="main_footer">
+  <a href="
+https://www.linkedin.com/in/fahim-asharaf-b10433a2/
+" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="
+https://github.com/fahimkk
+" target="_blank"><i class="fab fa-github-square"></i></a>
+  <a href="
+https://www.instagram.com/fahimasharaf/
+" target="_blank"><i class="fab fa-instagram-square"></i></a>
+  <p> &copy; 2021 
+Fahim KK
+ </p>
+</footer>
+
 </body>
 </html>

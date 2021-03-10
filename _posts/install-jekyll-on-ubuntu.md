@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Install Jekyll on Ubuntu
+title: Install Jekyll on Ubuntu title long
 permalink: install-jekyll-on-ubuntu
 image: install.png
 date: December 25, 2020
